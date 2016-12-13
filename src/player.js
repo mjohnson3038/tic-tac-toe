@@ -1,8 +1,6 @@
 var Player = function() {
+  this.turn = false;
+  this.mark = null;
 };
-
-// var noelle = new Player("Noelle");
-//
-// console.log(">>>>> " + noelle);
 
 export default Player;
