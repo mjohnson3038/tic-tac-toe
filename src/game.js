@@ -14,4 +14,18 @@ var Game = function() {
   this.playerOne.turn = true;
 };
 
+Game.prototype.toggleTurn = function() {
+  // TODO: find toggle method -- dealing with booleans
+  this.playerTwo.turn = [this.playerOne.turn,
+    this.playerOne.turn = this.playerTwo.turn][0];
+};
+
+Game.prototype.validSquare = function(a, b) {
+  if(this.board.grid[a][b] === null) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
 export default Game;
