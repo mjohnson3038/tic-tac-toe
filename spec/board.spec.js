@@ -1,3 +1,5 @@
+import Board from 'board';
+
 describe("Board", function() {
   var board = new Board();
 
@@ -24,5 +26,3 @@ describe("Board", function() {
     });
   });
 });
-
-import Board from 'board';
