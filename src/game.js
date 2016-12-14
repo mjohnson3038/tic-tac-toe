@@ -81,7 +81,7 @@ Game.prototype.play = function(a,b){
     } else if (this.playerTwo.turn) {
       this.board.grid[a][b] = this.playerTwo.mark;
     }
-    // this.toggleTurn();
+    this.toggleTurn();
   }
 };
 

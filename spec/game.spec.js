@@ -143,6 +143,8 @@ describe("Game", function(){
 
     beforeEach(function(){
       gamePlay.board.grid = [[null,null,null],[null,null,null],[null,null,null]];
+      gamePlay.playerOne.turn = true;
+      gamePlay.playerTwo.turn = false;
     });
 
     it("the play should not go through if the game has already been won", function(){
@@ -163,9 +165,10 @@ describe("Game", function(){
     it("should toggle the turns once a valid play is completed", function(){
       expect(gamePlay.playerOne.turn).toEqual(true);
       gamePlay.play(1,1);
+      expect(gamePlay.board.grid[1][1]).toEqual(gamePlay.playerOne.mark);
       expect(gamePlay.playerOne.turn).toEqual(false);
       expect(gamePlay.playerTwo.turn).toEqual(true);
-      // expect(gamePlay.board.grid[1][1]).toEqual(gamePlay.playerOne.mark);
+      expect(gamePlay.board.grid[1][1]).toEqual(gamePlay.playerOne.mark);
     });
   });
 });
