@@ -15,9 +15,8 @@ var Game = function() {
 };
 
 Game.prototype.toggleTurn = function() {
-  // TODO: find toggle method -- dealing with booleans
-  this.playerTwo.turn = [this.playerOne.turn,
-    this.playerOne.turn = this.playerTwo.turn][0];
+  this.playerOne.turn = !(this.playerOne.turn);
+  this.playerTwo.turn = !(this.playerTwo.turn);
 };
 
 Game.prototype.validSquare = function(a, b) {
