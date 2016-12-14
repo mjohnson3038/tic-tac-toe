@@ -70,6 +70,9 @@ Game.prototype.winner = function(){
 };
 
 Game.prototype.play = function(a,b){
+  if (a < 0 || a > 2 || b < 0 || b > 2){
+    throw new Error("This is not a valid square");
+  }
   if (this.winner()){
     return "Sorry the game has already been won.";
   } else if (this.validSquare(a,b) === false) {

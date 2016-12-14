@@ -178,5 +178,9 @@ describe("Game", function(){
 //      gamePlay.play(2,2);
       expect(gamePlay.play(2,2)).toEqual("Congratulations, " + gamePlay.winner() + " has won!");
     });
+
+    it("should throw an error when a player plays a play out of range", function(){
+      expect(function(){gamePlay.play(2,3);}).toThrowError("This is not a valid square");
+    });
   });
 });
