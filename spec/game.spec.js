@@ -3,7 +3,7 @@ import Board from 'board';
 
 describe("Game", function(){
   var game;
-  
+
   beforeEach(function(){
     game = new Game();
   });
@@ -45,10 +45,6 @@ describe("Game", function(){
       game.toggleTurn();
       expect(game.playerOne.turn).toEqual(true);
       expect(game.playerTwo.turn).toEqual(false);
-    });
-
-    it("should swap the the currentPlayer value", function(){
-
     });
   });
 
