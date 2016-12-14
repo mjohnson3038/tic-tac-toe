@@ -48,6 +48,22 @@ describe("Game", function(){
     });
   });
 
+  describe("currentPlayer", function(){
+    it("should return the player whose turn is true", function(){
+      // Player One begins
+      expect(game.currentPlayer()).toEqual("Player One");
+
+      // Once the turns have been toggled, the turn will switch over to Player Two
+      game.toggleTurn();
+      expect(game.currentPlayer()).toEqual("Player Two");
+
+      // And then back to Player One
+      game.toggleTurn();
+      expect(game.currentPlayer()).toEqual("Player One");
+
+    });
+  });
+
   describe("validSquare", function(){
     it("should return true if the square is null", function(){
       expect(game.validSquare(2,1)).toEqual(true);

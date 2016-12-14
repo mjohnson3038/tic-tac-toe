@@ -14,6 +14,8 @@ var Game = function() {
   this.playerOne.turn = true;
 };
 
+
+
 Game.prototype.toggleTurn = function() {
   this.playerOne.turn = !(this.playerOne.turn);
   this.playerTwo.turn = !(this.playerTwo.turn);
@@ -24,6 +26,14 @@ Game.prototype.validSquare = function(a, b) {
     return true;
   } else {
     return false;
+  }
+};
+
+Game.prototype.currentPlayer = function(){
+  if (this.playerOne.turn === true){
+    return "Player One";
+  } else if (this.playerTwo.turn === true) {
+    return "Player Two";
   }
 };
 
@@ -70,7 +80,7 @@ Game.prototype.winner = function(){
 
 Game.prototype.play = function(a,b){
 
-  // Error Handling of input type. Technically could be in one if-statement, but separated out if clear what each is looking for. 
+  // Error Handling of input type. Technically could be in one if-statement, but separated out if clear what each is looking for.
   if (typeof a !== "number" || typeof b !== "number" ){
     throw new Error("Coordinates must be integer numbers between 0 and 2 inclusive");
   } else if (a < 0 || a > 2 || b < 0 || b > 2){
