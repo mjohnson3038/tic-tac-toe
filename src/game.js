@@ -49,6 +49,23 @@ Game.prototype.winner = function(){
       }
     }
   }
+
+  // DIAGONAL WINS
+  if (this.board.grid[0][0] == this.board.grid[1][1] && this.board.grid[0][0] == this.board.grid[2][2]){
+    if (this.board.grid[0][0] == this.playerOne.mark){
+      return "Player One";
+    } else if (this.board.grid[0][0] == this.playerTwo.mark){
+      return "Player Two";
+    }
+  }
+  if (this.board.grid[0][2] == this.board.grid[1][1] && this.board.grid[0][2] == this.board.grid[2][0]){
+    if (this.board.grid[0][2] == this.playerOne.mark){
+      return "Player One";
+    } else if (this.board.grid[0][2] == this.playerTwo.mark){
+      return "Player Two";
+    }
+  }
+
   return null;
 };
 

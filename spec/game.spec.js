@@ -115,5 +115,20 @@ describe("Game", function(){
       console.log(">>>>>>>>>>>>>" + gameWinner.board.grid);
       expect(gameWinner.winner()).toEqual("Player One");
     });
+
+    it("should return the proper winner for a left diagonal win", function(){
+      gameWinner.board.grid[0][0] = "X";
+      gameWinner.board.grid[1][1] = "X";
+      gameWinner.board.grid[2][2] = "X";
+      expect(gameWinner.winner()).toEqual("Player One");
+    });
+
+    it("should return the proper winner for a right diagonal win", function(){
+      gameWinner.board.grid[0][2] = "O";
+      gameWinner.board.grid[1][1] = "O";
+      gameWinner.board.grid[2][0] = "O";
+      expect(gameWinner.winner()).toEqual("Player Two");
+    });
+
   });
 });
