@@ -56,9 +56,31 @@ describe("Game", function(){
   });
 
   describe("winner", function(){
+    var gameWinner = new Game();
+
+    beforeEach(function(){
+      gameWinner.board.grid = [[null,null,null],[null,null,null],[null,null,null]];
+    });
+    
     it("should return the proper winner for horizontal win", function(){
-      game.board.grid[0] = ["X","X","X"];
-      expect(game.winner()).toEqual("Player One");
+      gameWinner.board.grid[0] = ["X","X","X"];
+      expect(gameWinner.winner()).toEqual("Player One");
+    });
+    it("should return the proper winner for horizontal win", function(){
+      gameWinner.board.grid[1] = ["X","X","X"];
+      expect(gameWinner.winner()).toEqual("Player One");
+    });
+    it("should return the proper winner for horizontal win", function(){
+      gameWinner.board.grid[2] = ["X","X","X"];
+      expect(gameWinner.winner()).toEqual("Player One");
+    });
+    it("should return the proper winner for horizontal win", function(){
+      gameWinner.board.grid[1] = ["O","O","O"];
+      expect(gameWinner.winner()).toEqual("Player Two");
+    });
+    it("should return null for no winner", function(){
+      console.log(">>>>>>>>>>>>>" + gameWinner.board.grid);
+      expect(gameWinner.winner()).toEqual(null);
     });
   });
 });
