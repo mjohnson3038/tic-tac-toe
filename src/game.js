@@ -70,9 +70,12 @@ Game.prototype.winner = function(){
 };
 
 Game.prototype.play = function(a,b){
-  if (a < 0 || a > 2 || b < 0 || b > 2){
+  if (typeof a !== "number" || typeof b !== "number" ){
+    throw new Error("coordinates must be numbers between 0-2");
+  } else if (a < 0 || a > 2 || b < 0 || b > 2){
     throw new Error("This is not a valid square");
   }
+  
   if (this.winner()){
     return "Sorry the game has already been won.";
   } else if (this.validSquare(a,b) === false) {
@@ -89,11 +92,11 @@ Game.prototype.play = function(a,b){
     }
     this.toggleTurn();
   }
-
-  console.log("BOARD");
-  console.log(this.board.grid[0]);
-  console.log(this.board.grid[1]);
-  console.log(this.board.grid[2]);
+  //
+  // console.log("BOARD");
+  // console.log(this.board.grid[0]);
+  // console.log(this.board.grid[1]);
+  // console.log(this.board.grid[2]);
 };
 
 export default Game;

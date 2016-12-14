@@ -179,8 +179,14 @@ describe("Game", function(){
       expect(gamePlay.play(2,2)).toEqual("Congratulations, " + gamePlay.winner() + " has won!");
     });
 
-    it("should throw an error when a player plays a play out of range", function(){
+    it("should throw an error when a player plays a play out of range (0-2)", function(){
       expect(function(){gamePlay.play(2,3);}).toThrowError("This is not a valid square");
+    });
+
+    it("should throw an error when a player references a square with anything other then typeof number", function(){
+      expect(function(){gamePlay.play(2,"purple");}).toThrowError("coordinates must be numbers between 0-2");
+      expect(function(){gamePlay.play(true,0);}).toThrowError("coordinates must be numbers between 0-2");
+      expect(function(){gamePlay.play([1,2],);}).toThrowError("coordinates must be numbers between 0-2");
     });
   });
 });
