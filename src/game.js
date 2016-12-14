@@ -81,8 +81,16 @@ Game.prototype.play = function(a,b){
     } else if (this.playerTwo.turn) {
       this.board.grid[a][b] = this.playerTwo.mark;
     }
+    if(this.winner()) {
+      return "Congratulations, " + this.winner() + " has won!";
+    }
     this.toggleTurn();
   }
+
+  console.log("BOARD");
+  console.log(this.board.grid[0]);
+  console.log(this.board.grid[1]);
+  console.log(this.board.grid[2]);
 };
 
 export default Game;

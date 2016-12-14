@@ -169,5 +169,14 @@ describe("Game", function(){
       expect(gamePlay.playerOne.turn).toEqual(false);
       expect(gamePlay.playerTwo.turn).toEqual(true);
     });
+
+    it("should announce when a player has won", function(){
+      gamePlay.play(0,0);
+      gamePlay.play(0,2);
+      gamePlay.play(1,1);
+      gamePlay.play(1,2);
+//      gamePlay.play(2,2);
+      expect(gamePlay.play(2,2)).toEqual("Congratulations, " + gamePlay.winner() + " has won!");
+    });
   });
 });
