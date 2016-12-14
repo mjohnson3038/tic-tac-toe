@@ -138,7 +138,7 @@ describe("Game", function(){
     });
   });
 
-  describe("play", function(){
+  describe("play(a,b)", function(){
     var gamePlay = new Game();
 
     beforeEach(function(){
@@ -175,7 +175,6 @@ describe("Game", function(){
       gamePlay.play(0,2);
       gamePlay.play(1,1);
       gamePlay.play(1,2);
-//      gamePlay.play(2,2);
       expect(gamePlay.play(2,2)).toEqual("Congratulations, " + gamePlay.winner() + " has won!");
     });
   });

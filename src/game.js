@@ -15,9 +15,13 @@ var Game = function() {
 };
 
 Game.prototype.toggleTurn = function() {
-  // TODO: find toggle method -- dealing with booleans
-  this.playerTwo.turn = [this.playerOne.turn,
-    this.playerOne.turn = this.playerTwo.turn][0];
+  this.playerOne.turn = !(this.playerOne.turn);
+  this.playerTwo.turn = !(this.playerTwo.turn);
+  // if(this.playerOne.turn) {
+  //   return this.playerOne;
+  // } else {
+  //   return this.playerTwo;
+  // }
 };
 
 Game.prototype.validSquare = function(a, b) {
@@ -70,27 +74,31 @@ Game.prototype.winner = function(){
 };
 
 Game.prototype.play = function(a,b){
-  if (this.winner()){
-    return "Sorry the game has already been won.";
-  } else if (this.validSquare(a,b) === false) {
-    return "Sorry, the square is already played, please pick another one";
-  } else if (this.winner() === null && this.validSquare(a,b)) {
-    // Checking to see whose turn it is.
-    if (this.playerOne.turn){
-      this.board.grid[a][b] = this.playerOne.mark;
-    } else if (this.playerTwo.turn) {
-      this.board.grid[a][b] = this.playerTwo.mark;
-    }
-    if(this.winner()) {
+  var complete = false;
+  while (!complete) {
+    if (this.winner()){
+      return "Sorry the game has already been won.";
+    } else if (this.validSquare(a,b) === false) {
+      return "Sorry, the square is already played, please pick another one";
+    } else if (this.winner() === null && this.validSquare(a,b)) {
+      // Checking to see whose turn it is.
+      if (this.playerOne.turn){
+        this.board.grid[a][b] = this.playerOne.mark;
+      } else if (this.playerTwo.turn) {
+        this.board.grid[a][b] = this.playerTwo.mark;
+      }
+      console.log("BOARD");
+      console.log(this.board.grid[0]);
+      console.log(this.board.grid[1]);
+      console.log(this.board.grid[2]);
+
+      this.toggleTurn();
+      if(this.winner()) {
+        complete = true;
+      }
       return "Congratulations, " + this.winner() + " has won!";
     }
-    this.toggleTurn();
   }
-
-  console.log("BOARD");
-  console.log(this.board.grid[0]);
-  console.log(this.board.grid[1]);
-  console.log(this.board.grid[2]);
 };
 
 export default Game;
