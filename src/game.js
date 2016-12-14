@@ -69,4 +69,20 @@ Game.prototype.winner = function(){
   return null;
 };
 
+Game.prototype.play = function(a,b){
+  if (this.winner()){
+    return "Sorry the game has already been won.";
+  } else if (this.validSquare(a,b) === false) {
+    return "Sorry, the square is already played, please pick another one";
+  } else if (this.winner() === null && this.validSquare(a,b)) {
+    // Checking to see whose turn it is.
+    if (this.playerOne.turn){
+      this.board.grid[a][b] = this.playerOne.mark;
+    } else if (this.playerTwo.turn) {
+      this.board.grid[a][b] = this.playerTwo.mark;
+    }
+    // this.toggleTurn();
+  }
+};
+
 export default Game;

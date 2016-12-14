@@ -137,4 +137,35 @@ describe("Game", function(){
       expect(gameWinner.winner()).toEqual(null);
     });
   });
+
+  describe("play", function(){
+    var gamePlay = new Game();
+
+    beforeEach(function(){
+      gamePlay.board.grid = [[null,null,null],[null,null,null],[null,null,null]];
+    });
+
+    it("the play should not go through if the game has already been won", function(){
+      gamePlay.board.grid[0] = ["X","X","X"];
+      expect(gamePlay.play(1,1)).toEqual("Sorry the game has already been won.");
+    });
+
+    it("the play should not go through if the square isn't valid", function(){
+      gamePlay.board.grid[1] = ["X","X","O"];
+      expect(gamePlay.play(1,1)).toEqual("Sorry, the square is already played, please pick another one");
+    });
+
+    it("should play a square if it is valid and game hasn't been won yet", function(){
+      gamePlay.play(1,1);
+      expect(gamePlay.board.grid[1][1]).toEqual(gamePlay.playerOne.mark);
+    });
+
+    it("should toggle the turns once a valid play is completed", function(){
+      expect(gamePlay.playerOne.turn).toEqual(true);
+      gamePlay.play(1,1);
+      expect(gamePlay.playerOne.turn).toEqual(false);
+      expect(gamePlay.playerTwo.turn).toEqual(true);
+      // expect(gamePlay.board.grid[1][1]).toEqual(gamePlay.playerOne.mark);
+    });
+  });
 });
