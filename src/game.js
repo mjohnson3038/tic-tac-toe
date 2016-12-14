@@ -36,43 +36,42 @@ Game.prototype.currentPlayer = function(){
     return "Player Two";
   }
 };
+//
+Game.prototype.playerByMark = function(mark){
+  // TODO: Having trouble getting the testing to work for this error
+  // if (mark !== "X" || mark !== "O" ){
+  //   throw new Error("Function only accepts the marks of the players which are passed as strings");
+  // }
+  if (mark == this.playerOne.mark){
+    return "Player One";
+  } else if (mark == this.playerTwo.mark){
+    return "Player Two";
+  }
+};
 
 Game.prototype.winner = function(){
   // FOR THE HORIZONTAL WIN - STILL TO DETERMINE IF WE CNA PUT THIS IN A LOOP VS HARD CODING.
+
+  // A function to determine the player based on the mark
+
   for(var i = 0; i < this.board.grid.length; i++){
-    if (this.board.grid[i][0] == this.board.grid[i][1] && this.board.grid[i][0] == this.board.grid[i][2]){
-      if (this.board.grid[i][0] == this.playerOne.mark){
-        return "Player One";
-      } else if (this.board.grid[i][0] == this.playerTwo.mark){
-        return "Player Two";
-      }
+    if (this.board.grid[i][0] == this.board.grid[i][1] && this.board.grid[i][0] == this.board.grid[i][2] && this.board.grid[i][0] !== null){
+      return this.playerByMark(this.board.grid[i][0]);
     }
   }
   // VERTICAL WIN
   for(var k = 0; k < this.board.grid[0].length; k++) {
-    if (this.board.grid[0][k] == this.board.grid[1][k] && this.board.grid[0][k] == this.board.grid[2][k]){
-      if (this.board.grid[0][k] == this.playerOne.mark){
-        return "Player One";
-      } else if (this.board.grid[0][k] == this.playerTwo.mark){
-        return "Player Two";
-      }
+    if (this.board.grid[0][k] == this.board.grid[1][k] && this.board.grid[0][k] == this.board.grid[2][k] && this.board.grid[0][k] !== null){
+      return this.playerByMark(this.board.grid[0][k]);
     }
   }
 
   // DIAGONAL WINS
-  if (this.board.grid[0][0] == this.board.grid[1][1] && this.board.grid[0][0] == this.board.grid[2][2]){
-    if (this.board.grid[0][0] == this.playerOne.mark){
-      return "Player One";
-    } else if (this.board.grid[0][0] == this.playerTwo.mark){
-      return "Player Two";
-    }
+  if (this.board.grid[0][0] == this.board.grid[1][1] && this.board.grid[0][0] == this.board.grid[2][2] && this.board.grid[1][1] !== null){
+    return this.playerByMark(this.board.grid[1][1]);
   }
-  if (this.board.grid[0][2] == this.board.grid[1][1] && this.board.grid[0][2] == this.board.grid[2][0]){
-    if (this.board.grid[0][2] == this.playerOne.mark){
-      return "Player One";
-    } else if (this.board.grid[0][2] == this.playerTwo.mark){
-      return "Player Two";
-    }
+  if (this.board.grid[0][2] == this.board.grid[1][1] && this.board.grid[0][2] == this.board.grid[2][0] && this.board.grid[1][1] !== null){
+    return this.playerByMark(this.board.grid[1][1]);
   }
 
   return null;

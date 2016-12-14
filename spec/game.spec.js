@@ -64,6 +64,20 @@ describe("Game", function(){
     });
   });
 
+  // Given a symbol (X or O) we should be able to say the winner. This is being used for refactoring since similar logic is used throughout.
+  describe("playerByMark", function(){
+    it("should return the player associated with the mark", function(){
+      expect(game.playerByMark("X")).toEqual("Player One");
+      expect(game.playerByMark("O")).toEqual("Player Two");
+    });
+
+    // it("should only accept the marks of the players", function(){
+    //   expect(function(){game.playerByMark("purple");}).toThrowError("Coordinates must be integer numbers between 0 and 2 inclusive");
+      // expect(function(){game.playerByMark(X);}).toThrowError("Function only accepts the marks of the players");
+      // expect(function(){game.playerByMark(O);}).toThrowError("Function only accepts the marks of the players");
+    // });
+  });
+
   describe("validSquare", function(){
     it("should return true if the square is null", function(){
       expect(game.validSquare(2,1)).toEqual(true);
