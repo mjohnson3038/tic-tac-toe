@@ -32,7 +32,7 @@ Game.prototype.winner = function(){
   for(var i = 0; i < this.board.grid.length; i++){
     for(var j = 1; j < this.board.grid[i].length; j ++){
       if (this.board.grid[i][0] != this.board.grid[i][j]){
-        return null;
+        break;
       }
     }
     if (this.board.grid[i][0] == this.playerOne.mark){
@@ -41,6 +41,7 @@ Game.prototype.winner = function(){
       return "Player Two";
     }
   }
+  return null;
 };
 
 export default Game;

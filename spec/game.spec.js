@@ -61,7 +61,7 @@ describe("Game", function(){
     beforeEach(function(){
       gameWinner.board.grid = [[null,null,null],[null,null,null],[null,null,null]];
     });
-    
+
     it("should return the proper winner for horizontal win", function(){
       gameWinner.board.grid[0] = ["X","X","X"];
       expect(gameWinner.winner()).toEqual("Player One");
