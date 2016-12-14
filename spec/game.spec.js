@@ -54,4 +54,11 @@ describe("Game", function(){
       expect(game.validSquare(0,1)).toEqual(false);
     });
   });
+
+  describe("winner", function(){
+    it("should return the proper winner for horizontal win", function(){
+      game.board.grid[0] = ["X","X","X"];
+      expect(game.winner.toEqual("Player One"));
+    });
+  });
 });

@@ -28,4 +28,13 @@ Game.prototype.validSquare = function(a, b) {
   }
 };
 
+Game.prototype.winner = function(){
+  for(var i = 0; i < this.board.grid.length; i++){
+
+    for(var j = 0; j < this.board.grid[i].length; j++){
+      // if(this.board.grid[i][j] )
+    }
+  }
+};
+
 export default Game;
