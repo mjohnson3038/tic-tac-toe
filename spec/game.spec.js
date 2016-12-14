@@ -90,5 +90,30 @@ describe("Game", function(){
       console.log(">>>>>>>>>>>>>" + gameWinner.board.grid);
       expect(gameWinner.winner()).toEqual("Player Two");
     });
+
+    it("should return the proper winner for a vertical win", function(){
+      gameWinner.board.grid[0][1] = "O";
+      gameWinner.board.grid[1][1] = "O";
+      gameWinner.board.grid[2][1] = "O";
+      console.log(">>>>>>>>>>>>>" + gameWinner.board.grid);
+      expect(gameWinner.winner()).toEqual("Player Two");
+    });
+
+
+    it("should return the proper winner for a vertical win", function(){
+      gameWinner.board.grid[0][2] = "O";
+      gameWinner.board.grid[1][2] = "O";
+      gameWinner.board.grid[2][2] = "O";
+      console.log(">>>>>>>>>>>>>" + gameWinner.board.grid);
+      expect(gameWinner.winner()).toEqual("Player Two");
+    });
+
+    it("should return the proper winner for a vertical win", function(){
+      gameWinner.board.grid[0][0] = "X";
+      gameWinner.board.grid[1][0] = "X";
+      gameWinner.board.grid[2][0] = "X";
+      console.log(">>>>>>>>>>>>>" + gameWinner.board.grid);
+      expect(gameWinner.winner()).toEqual("Player One");
+    });
   });
 });

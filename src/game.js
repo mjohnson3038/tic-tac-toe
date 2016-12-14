@@ -39,6 +39,16 @@ Game.prototype.winner = function(){
       }
     }
   }
+  // VERTICAL WIN
+  for(var k = 0; k < this.board.grid[0].length; k++) {
+    if (this.board.grid[0][k] == this.board.grid[1][k] && this.board.grid[0][k] == this.board.grid[2][k]){
+      if (this.board.grid[0][k] == this.playerOne.mark){
+        return "Player One";
+      } else if (this.board.grid[0][k] == this.playerTwo.mark){
+        return "Player Two";
+      }
+    }
+  }
   return null;
 };
 
