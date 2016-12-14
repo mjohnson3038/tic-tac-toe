@@ -87,7 +87,7 @@ describe("Game", function(){
       gameWinner.board.grid[0][0] = "O";
       gameWinner.board.grid[1][0] = "O";
       gameWinner.board.grid[2][0] = "O";
-      console.log(">>>>>>>>>>>>>" + gameWinner.board.grid);
+      // console.log(">>>>>>>>>>>>>" + gameWinner.board.grid);
       expect(gameWinner.winner()).toEqual("Player Two");
     });
 
@@ -95,7 +95,7 @@ describe("Game", function(){
       gameWinner.board.grid[0][1] = "O";
       gameWinner.board.grid[1][1] = "O";
       gameWinner.board.grid[2][1] = "O";
-      console.log(">>>>>>>>>>>>>" + gameWinner.board.grid);
+      // console.log(">>>>>>>>>>>>>" + gameWinner.board.grid);
       expect(gameWinner.winner()).toEqual("Player Two");
     });
 
@@ -104,7 +104,7 @@ describe("Game", function(){
       gameWinner.board.grid[0][2] = "O";
       gameWinner.board.grid[1][2] = "O";
       gameWinner.board.grid[2][2] = "O";
-      console.log(">>>>>>>>>>>>>" + gameWinner.board.grid);
+      // console.log(">>>>>>>>>>>>>" + gameWinner.board.grid);
       expect(gameWinner.winner()).toEqual("Player Two");
     });
 
@@ -112,7 +112,7 @@ describe("Game", function(){
       gameWinner.board.grid[0][0] = "X";
       gameWinner.board.grid[1][0] = "X";
       gameWinner.board.grid[2][0] = "X";
-      console.log(">>>>>>>>>>>>>" + gameWinner.board.grid);
+      // console.log(">>>>>>>>>>>>>" + gameWinner.board.grid);
       expect(gameWinner.winner()).toEqual("Player One");
     });
 
@@ -168,7 +168,6 @@ describe("Game", function(){
       expect(gamePlay.board.grid[1][1]).toEqual(gamePlay.playerOne.mark);
       expect(gamePlay.playerOne.turn).toEqual(false);
       expect(gamePlay.playerTwo.turn).toEqual(true);
-      expect(gamePlay.board.grid[1][1]).toEqual(gamePlay.playerOne.mark);
     });
   });
 });
