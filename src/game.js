@@ -70,13 +70,13 @@ Game.prototype.winner = function(){
 
 Game.prototype.play = function(a,b){
 
-  // Error Handling of input type
+  // Error Handling of input type. Technically could be in one if-statement, but separated out if clear what each is looking for. 
   if (typeof a !== "number" || typeof b !== "number" ){
-    throw new Error("coordinates must be integer numbers between 0-2");
+    throw new Error("Coordinates must be integer numbers between 0 and 2 inclusive");
   } else if (a < 0 || a > 2 || b < 0 || b > 2){
-    throw new Error("This is not a valid square");
-  } if (a % 1 !== 0 || b % 1 !== 0){
-    throw new Error("Coordinates of Squares must be whole numbers between 0 and 2");
+    throw new Error("Coordinates must be integer numbers between 0 and 2 inclusive");
+  } else if (a % 1 !== 0 || b % 1 !== 0){
+    throw new Error("Coordinates must be integer numbers between 0 and 2 inclusive");
   }
 
   if (this.winner()){

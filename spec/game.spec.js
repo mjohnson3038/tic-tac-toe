@@ -180,14 +180,21 @@ describe("Game", function(){
     });
 
     it("should throw an error when a player plays a play out of range (0-2)", function(){
-      expect(function(){gamePlay.play(2,3);}).toThrowError("This is not a valid square");
+      expect(function(){gamePlay.play(2,3);}).toThrowError("Coordinates must be integer numbers between 0 and 2 inclusive");
+      expect(function(){gamePlay.play(2,-1);}).toThrowError("Coordinates must be integer numbers between 0 and 2 inclusive");
+      expect(function(){gamePlay.play(-1,2);}).toThrowError("Coordinates must be integer numbers between 0 and 2 inclusive");
+      expect(function(){gamePlay.play(-1,3);}).toThrowError("Coordinates must be integer numbers between 0 and 2 inclusive");
     });
 
     it("should throw an error when a player references a square with anything other then typeof number", function(){
-      expect(function(){gamePlay.play(2,"purple");}).toThrowError("coordinates must be integer numbers between 0-2");
-      expect(function(){gamePlay.play(true,0);}).toThrowError("coordinates must be integer numbers between 0-2");
-      expect(function(){gamePlay.play([1,2]);}).toThrowError("coordinates must be integer numbers between 0-2");
-      expect(function(){gamePlay.play(1.1,2);}).toThrowError("Coordinates of Squares must be whole numbers between 0 and 2");
+      expect(function(){gamePlay.play(2,"purple");}).toThrowError("Coordinates must be integer numbers between 0 and 2 inclusive");
+      expect(function(){gamePlay.play(true,0);}).toThrowError("Coordinates must be integer numbers between 0 and 2 inclusive");
+      expect(function(){gamePlay.play([1,2]);}).toThrowError("Coordinates must be integer numbers between 0 and 2 inclusive");
+      expect(function(){gamePlay.play(1.1,2);}).toThrowError("Coordinates must be integer numbers between 0 and 2 inclusive");
+    });
+
+    it("should throw an error when a player plays a square with non-integer coordinates", function(){
+      expect(function(){gamePlay.play(1.1,2);}).toThrowError("Coordinates must be integer numbers between 0 and 2 inclusive");
     });
   });
 });
