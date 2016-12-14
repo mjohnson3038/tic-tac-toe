@@ -130,5 +130,11 @@ describe("Game", function(){
       expect(gameWinner.winner()).toEqual("Player Two");
     });
 
+    it("should return null if the entire game ends in a draw", function(){
+      gameWinner.board.grid[0] = ["X", "O", "X"];
+      gameWinner.board.grid[1] = ["O", "X", "O"];
+      gameWinner.board.grid[2] = ["O", "X", "O"];
+      expect(gameWinner.winner()).toEqual(null);
+    });
   });
 });
