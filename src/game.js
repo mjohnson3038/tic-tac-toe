@@ -12,16 +12,18 @@ var Game = function() {
   this.playerOne.mark = "X";
   this.playerTwo.mark = "O";
   this.playerOne.turn = true;
+  this.currentPlayer = this.playerOne;
 };
 
 Game.prototype.toggleTurn = function() {
   this.playerOne.turn = !(this.playerOne.turn);
   this.playerTwo.turn = !(this.playerTwo.turn);
-  // if(this.playerOne.turn) {
-  //   return this.playerOne;
-  // } else {
-  //   return this.playerTwo;
-  // }
+  if(this.playerOne.turn) {
+    this.currentPlayer = this.playerOne;
+  } else {
+    this.currentPlayer = this.playerTwo;
+  }
+  // return this.currentPlayer;
 };
 
 Game.prototype.validSquare = function(a, b) {
@@ -87,10 +89,10 @@ Game.prototype.play = function(a,b){
       } else if (this.playerTwo.turn) {
         this.board.grid[a][b] = this.playerTwo.mark;
       }
-      console.log("BOARD");
-      console.log(this.board.grid[0]);
-      console.log(this.board.grid[1]);
-      console.log(this.board.grid[2]);
+      // console.log("BOARD");
+      // console.log(this.board.grid[0]);
+      // console.log(this.board.grid[1]);
+      // console.log(this.board.grid[2]);
 
       this.toggleTurn();
       if(this.winner()) {

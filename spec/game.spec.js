@@ -2,7 +2,11 @@ import Game from 'game';
 import Board from 'board';
 
 describe("Game", function(){
-  var game = new Game();
+  var game;
+  
+  beforeEach(function(){
+    game = new Game();
+  });
 
   it("instantiates two new player instances", function(){
     expect(game.playerOne).toBeDefined();
@@ -30,17 +34,21 @@ describe("Game", function(){
   });
 
   describe("toggleTurn", function() {
-    var gameTwo = new Game();
-    gameTwo.toggleTurn();
     it("should swap the boolean values of players' turns", function(){
-      expect(gameTwo.playerOne.turn).toEqual(false);
-      expect(gameTwo.playerTwo.turn).toEqual(true);
+      game.toggleTurn();
+      expect(game.playerOne.turn).toEqual(false);
+      expect(game.playerTwo.turn).toEqual(true);
     });
 
     it("should swap the boolean values of players' turns again", function(){
-      gameTwo.toggleTurn();
-      expect(gameTwo.playerOne.turn).toEqual(true);
-      expect(gameTwo.playerTwo.turn).toEqual(false);
+      game.toggleTurn();
+      game.toggleTurn();
+      expect(game.playerOne.turn).toEqual(true);
+      expect(game.playerTwo.turn).toEqual(false);
+    });
+
+    it("should swap the the currentPlayer value", function(){
+
     });
   });
 
@@ -56,126 +64,111 @@ describe("Game", function(){
   });
 
   describe("winner", function(){
-    var gameWinner = new Game();
-
-    beforeEach(function(){
-      gameWinner.board.grid = [[null,null,null],[null,null,null],[null,null,null]];
-    });
-
     it("should return the proper winner for horizontal win", function(){
-      gameWinner.board.grid[0] = ["X","X","X"];
-      expect(gameWinner.winner()).toEqual("Player One");
+      game.board.grid[0] = ["X","X","X"];
+      expect(game.winner()).toEqual("Player One");
     });
     it("should return the proper winner for horizontal win", function(){
-      gameWinner.board.grid[1] = ["X","X","X"];
-      expect(gameWinner.winner()).toEqual("Player One");
+      game.board.grid[1] = ["X","X","X"];
+      expect(game.winner()).toEqual("Player One");
     });
     it("should return the proper winner for horizontal win", function(){
-      gameWinner.board.grid[2] = ["X","X","X"];
-      expect(gameWinner.winner()).toEqual("Player One");
+      game.board.grid[2] = ["X","X","X"];
+      expect(game.winner()).toEqual("Player One");
     });
     it("should return the proper winner for horizontal win", function(){
-      gameWinner.board.grid[1] = ["O","O","O"];
-      expect(gameWinner.winner()).toEqual("Player Two");
+      game.board.grid[1] = ["O","O","O"];
+      expect(game.winner()).toEqual("Player Two");
     });
     it("should return null for no winner", function(){
-      // console.log(">>>>>>>>>>>>>" + gameWinner.board.grid);
-      expect(gameWinner.winner()).toEqual(null);
+      // console.log(">>>>>>>>>>>>>" + game.board.grid);
+      expect(game.winner()).toEqual(null);
     });
 
     it("should return the proper winner for a vertical win", function(){
-      gameWinner.board.grid[0][0] = "O";
-      gameWinner.board.grid[1][0] = "O";
-      gameWinner.board.grid[2][0] = "O";
-      // console.log(">>>>>>>>>>>>>" + gameWinner.board.grid);
-      expect(gameWinner.winner()).toEqual("Player Two");
+      game.board.grid[0][0] = "O";
+      game.board.grid[1][0] = "O";
+      game.board.grid[2][0] = "O";
+      // console.log(">>>>>>>>>>>>>" + game.board.grid);
+      expect(game.winner()).toEqual("Player Two");
     });
 
     it("should return the proper winner for a vertical win", function(){
-      gameWinner.board.grid[0][1] = "O";
-      gameWinner.board.grid[1][1] = "O";
-      gameWinner.board.grid[2][1] = "O";
-      // console.log(">>>>>>>>>>>>>" + gameWinner.board.grid);
-      expect(gameWinner.winner()).toEqual("Player Two");
-    });
-
-
-    it("should return the proper winner for a vertical win", function(){
-      gameWinner.board.grid[0][2] = "O";
-      gameWinner.board.grid[1][2] = "O";
-      gameWinner.board.grid[2][2] = "O";
-      // console.log(">>>>>>>>>>>>>" + gameWinner.board.grid);
-      expect(gameWinner.winner()).toEqual("Player Two");
+      game.board.grid[0][1] = "O";
+      game.board.grid[1][1] = "O";
+      game.board.grid[2][1] = "O";
+      // console.log(">>>>>>>>>>>>>" + game.board.grid);
+      expect(game.winner()).toEqual("Player Two");
     });
 
     it("should return the proper winner for a vertical win", function(){
-      gameWinner.board.grid[0][0] = "X";
-      gameWinner.board.grid[1][0] = "X";
-      gameWinner.board.grid[2][0] = "X";
-      // console.log(">>>>>>>>>>>>>" + gameWinner.board.grid);
-      expect(gameWinner.winner()).toEqual("Player One");
+      game.board.grid[0][2] = "O";
+      game.board.grid[1][2] = "O";
+      game.board.grid[2][2] = "O";
+      // console.log(">>>>>>>>>>>>>" + game.board.grid);
+      expect(game.winner()).toEqual("Player Two");
+    });
+
+    it("should return the proper winner for a vertical win", function(){
+      game.board.grid[0][0] = "X";
+      game.board.grid[1][0] = "X";
+      game.board.grid[2][0] = "X";
+      // console.log(">>>>>>>>>>>>>" + game.board.grid);
+      expect(game.winner()).toEqual("Player One");
     });
 
     it("should return the proper winner for a left diagonal win", function(){
-      gameWinner.board.grid[0][0] = "X";
-      gameWinner.board.grid[1][1] = "X";
-      gameWinner.board.grid[2][2] = "X";
-      expect(gameWinner.winner()).toEqual("Player One");
+      game.board.grid[0][0] = "X";
+      game.board.grid[1][1] = "X";
+      game.board.grid[2][2] = "X";
+      expect(game.winner()).toEqual("Player One");
     });
 
     it("should return the proper winner for a right diagonal win", function(){
-      gameWinner.board.grid[0][2] = "O";
-      gameWinner.board.grid[1][1] = "O";
-      gameWinner.board.grid[2][0] = "O";
-      expect(gameWinner.winner()).toEqual("Player Two");
+      game.board.grid[0][2] = "O";
+      game.board.grid[1][1] = "O";
+      game.board.grid[2][0] = "O";
+      expect(game.winner()).toEqual("Player Two");
     });
 
     it("should return null if the entire game ends in a draw", function(){
-      gameWinner.board.grid[0] = ["X", "O", "X"];
-      gameWinner.board.grid[1] = ["O", "X", "O"];
-      gameWinner.board.grid[2] = ["O", "X", "O"];
-      expect(gameWinner.winner()).toEqual(null);
+      game.board.grid[0] = ["X", "O", "X"];
+      game.board.grid[1] = ["O", "X", "O"];
+      game.board.grid[2] = ["O", "X", "O"];
+      expect(game.winner()).toEqual(null);
     });
   });
 
   describe("play(a,b)", function(){
-    var gamePlay = new Game();
-
-    beforeEach(function(){
-      gamePlay.board.grid = [[null,null,null],[null,null,null],[null,null,null]];
-      gamePlay.playerOne.turn = true;
-      gamePlay.playerTwo.turn = false;
-    });
-
     it("the play should not go through if the game has already been won", function(){
-      gamePlay.board.grid[0] = ["X","X","X"];
-      expect(gamePlay.play(1,1)).toEqual("Sorry the game has already been won.");
+      game.board.grid[0] = ["X","X","X"];
+      expect(game.play(1,1)).toEqual("Sorry the game has already been won.");
     });
 
     it("the play should not go through if the square isn't valid", function(){
-      gamePlay.board.grid[1] = ["X","X","O"];
-      expect(gamePlay.play(1,1)).toEqual("Sorry, the square is already played, please pick another one");
+      game.board.grid[1] = ["X","X","O"];
+      expect(game.play(1,1)).toEqual("Sorry, the square is already played, please pick another one");
     });
 
     it("should play a square if it is valid and game hasn't been won yet", function(){
-      gamePlay.play(1,1);
-      expect(gamePlay.board.grid[1][1]).toEqual(gamePlay.playerOne.mark);
+      game.play(1,1);
+      expect(game.board.grid[1][1]).toEqual(game.playerOne.mark);
     });
 
     it("should toggle the turns once a valid play is completed", function(){
-      expect(gamePlay.playerOne.turn).toEqual(true);
-      gamePlay.play(1,1);
-      expect(gamePlay.board.grid[1][1]).toEqual(gamePlay.playerOne.mark);
-      expect(gamePlay.playerOne.turn).toEqual(false);
-      expect(gamePlay.playerTwo.turn).toEqual(true);
+      expect(game.playerOne.turn).toEqual(true);
+      game.play(1,1);
+      expect(game.board.grid[1][1]).toEqual(game.playerOne.mark);
+      expect(game.playerOne.turn).toEqual(false);
+      expect(game.playerTwo.turn).toEqual(true);
     });
 
     it("should announce when a player has won", function(){
-      gamePlay.play(0,0);
-      gamePlay.play(0,2);
-      gamePlay.play(1,1);
-      gamePlay.play(1,2);
-      expect(gamePlay.play(2,2)).toEqual("Congratulations, " + gamePlay.winner() + " has won!");
+      game.play(0,0);
+      game.play(0,2);
+      game.play(1,1);
+      game.play(1,2);
+      expect(game.play(2,2)).toEqual("Congratulations, " + game.winner() + " has won!");
     });
   });
 });
