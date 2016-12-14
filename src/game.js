@@ -29,16 +29,14 @@ Game.prototype.validSquare = function(a, b) {
 };
 
 Game.prototype.winner = function(){
+  // FOR THE HORIZONTAL WIN - STILL TO DETERMINE IF WE CNA PUT THIS IN A LOOP VS HARD CODING.
   for(var i = 0; i < this.board.grid.length; i++){
-    for(var j = 1; j < this.board.grid[i].length; j ++){
-      if (this.board.grid[i][0] != this.board.grid[i][j]){
-        break;
+    if (this.board.grid[i][0] == this.board.grid[i][1] && this.board.grid[i][0] == this.board.grid[i][2]){
+      if (this.board.grid[i][0] == this.playerOne.mark){
+        return "Player One";
+      } else if (this.board.grid[i][0] == this.playerTwo.mark){
+        return "Player Two";
       }
-    }
-    if (this.board.grid[i][0] == this.playerOne.mark){
-      return "Player One";
-    } else if (this.board.grid[i][0] == this.playerTwo.mark) {
-      return "Player Two";
     }
   }
   return null;

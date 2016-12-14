@@ -79,8 +79,16 @@ describe("Game", function(){
       expect(gameWinner.winner()).toEqual("Player Two");
     });
     it("should return null for no winner", function(){
-      console.log(">>>>>>>>>>>>>" + gameWinner.board.grid);
+      // console.log(">>>>>>>>>>>>>" + gameWinner.board.grid);
       expect(gameWinner.winner()).toEqual(null);
+    });
+
+    it("should return the proper winner for a vertical win", function(){
+      gameWinner.board.grid[0][0] = "O";
+      gameWinner.board.grid[1][0] = "O";
+      gameWinner.board.grid[2][0] = "O";
+      console.log(">>>>>>>>>>>>>" + gameWinner.board.grid);
+      expect(gameWinner.winner()).toEqual("Player Two");
     });
   });
 });
