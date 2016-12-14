@@ -69,12 +69,16 @@ Game.prototype.winner = function(){
 };
 
 Game.prototype.play = function(a,b){
+
+  // Error Handling of input type
   if (typeof a !== "number" || typeof b !== "number" ){
-    throw new Error("coordinates must be numbers between 0-2");
+    throw new Error("coordinates must be integer numbers between 0-2");
   } else if (a < 0 || a > 2 || b < 0 || b > 2){
     throw new Error("This is not a valid square");
+  } if (a % 1 !== 0 || b % 1 !== 0){
+    throw new Error("Coordinates of Squares must be whole numbers between 0 and 2");
   }
-  
+
   if (this.winner()){
     return "Sorry the game has already been won.";
   } else if (this.validSquare(a,b) === false) {
