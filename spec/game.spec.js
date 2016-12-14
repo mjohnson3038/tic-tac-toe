@@ -58,7 +58,7 @@ describe("Game", function(){
   describe("winner", function(){
     it("should return the proper winner for horizontal win", function(){
       game.board.grid[0] = ["X","X","X"];
-      expect(game.winner.toEqual("Player One"));
+      expect(game.winner()).toEqual("Player One");
     });
   });
 });
