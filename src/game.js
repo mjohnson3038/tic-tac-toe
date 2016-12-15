@@ -41,9 +41,9 @@ Game.prototype.playerByMark = function(mark){
 // A function to determine the player based on the mark
 
   // TODO: Having trouble getting the testing to work for this error
-  // if (mark !== "X" || mark !== "O" ){
-  //   throw new Error("Function only accepts the marks of the players which are passed as strings");
-  // }
+  if (mark !== "X" && mark !== "O" ){
+    throw new Error("Function only accepts the marks of the players which are passed as strings");
+  }
 
   if (mark == this.playerOne.mark){
     return "Player One";

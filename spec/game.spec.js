@@ -71,11 +71,11 @@ describe("Game", function(){
       expect(game.playerByMark("O")).toEqual("Player Two");
     });
 
-    // it("should only accept the marks of the players", function(){
-    //   expect(function(){game.playerByMark("purple");}).toThrowError("Coordinates must be integer numbers between 0 and 2 inclusive");
-      // expect(function(){game.playerByMark(X);}).toThrowError("Function only accepts the marks of the players");
-      // expect(function(){game.playerByMark(O);}).toThrowError("Function only accepts the marks of the players");
-    // });
+    it("should only accept the marks of the players", function(){
+      expect(function(){game.playerByMark("purple");}).toThrowError("Function only accepts the marks of the players which are passed as strings");
+      expect(function(){game.playerByMark(1);}).toThrowError("Function only accepts the marks of the players which are passed as strings");
+      expect(function(){game.playerByMark([1,2]);}).toThrowError("Function only accepts the marks of the players which are passed as strings");
+    });
   });
 
   describe("validSquare", function(){
