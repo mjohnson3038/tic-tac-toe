@@ -51,15 +51,15 @@ describe("Game", function(){
   describe("currentPlayer", function(){
     it("should return the player whose turn is true", function(){
       // Player One begins
-      expect(game.currentPlayer()).toEqual("Player One");
+      expect(game.currentPlayer()).toEqual(game.playerOne);
 
       // Once the turns have been toggled, the turn will switch over to Player Two
       game.toggleTurn();
-      expect(game.currentPlayer()).toEqual("Player Two");
+      expect(game.currentPlayer()).toEqual(game.playerTwo);
 
       // And then back to Player One
       game.toggleTurn();
-      expect(game.currentPlayer()).toEqual("Player One");
+      expect(game.currentPlayer()).toEqual(game.playerOne);
 
     });
   });

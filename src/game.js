@@ -31,17 +31,20 @@ Game.prototype.validSquare = function(a, b) {
 
 Game.prototype.currentPlayer = function(){
   if (this.playerOne.turn === true){
-    return "Player One";
+    return this.playerOne;
   } else if (this.playerTwo.turn === true) {
-    return "Player Two";
+    return this.playerTwo;
   }
 };
 //
 Game.prototype.playerByMark = function(mark){
+// A function to determine the player based on the mark
+
   // TODO: Having trouble getting the testing to work for this error
   // if (mark !== "X" || mark !== "O" ){
   //   throw new Error("Function only accepts the marks of the players which are passed as strings");
   // }
+
   if (mark == this.playerOne.mark){
     return "Player One";
   } else if (mark == this.playerTwo.mark){
@@ -51,8 +54,6 @@ Game.prototype.playerByMark = function(mark){
 
 Game.prototype.winner = function(){
   // FOR THE HORIZONTAL WIN - STILL TO DETERMINE IF WE CNA PUT THIS IN A LOOP VS HARD CODING.
-
-  // A function to determine the player based on the mark
 
   for(var i = 0; i < this.board.grid.length; i++){
     if (this.board.grid[i][0] == this.board.grid[i][1] && this.board.grid[i][0] == this.board.grid[i][2] && this.board.grid[i][0] !== null){
@@ -94,11 +95,9 @@ Game.prototype.play = function(a,b){
     return "Sorry, the square is already played, please pick another one";
   } else if (this.winner() === null && this.validSquare(a,b)) {
     // Checking to see whose turn it is.
-    if (this.playerOne.turn){
-      this.board.grid[a][b] = this.playerOne.mark;
-    } else if (this.playerTwo.turn) {
-      this.board.grid[a][b] = this.playerTwo.mark;
-    }
+
+    this.board.grid[a][b] = this.currentPlayer().mark;
+
     if(this.winner()) {
       return "Congratulations, " + this.winner() + " has won!";
     }
