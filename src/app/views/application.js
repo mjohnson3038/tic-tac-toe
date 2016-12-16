@@ -1,6 +1,7 @@
 import Backbone from 'backbone';
+import BoardView from 'app/views/board-view.js';
 
-var BoardView = Backbone.View.extend({
+var ApplicationView = Backbone.View.extend({
   initialize: function(){
     this.render();
   },
@@ -18,4 +19,4 @@ var BoardView = Backbone.View.extend({
   }
 });
 
-export default BoardView;
+export default ApplicationView;
