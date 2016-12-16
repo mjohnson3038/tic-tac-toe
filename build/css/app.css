@@ -1,0 +1,37 @@
+h1 {
+  text-align: center;
+}
+
+#game {
+  margin: 0 auto 0 auto;
+}
+
+table {
+  margin: 0 auto 0 auto;
+  width: 30%;
+  text-align: center;
+}
+
+td {
+  border: 1px solid #000000;
+  background-color: white;
+  padding: 20px;
+  height: 4em;
+  text-align: center;
+}
+
+#sq-1, #sq-4, #sq-7 {
+  border-left: 0;
+}
+
+#sq-3, #sq-6, #sq-9 {
+  border-right: 0;
+}
+
+#sq-1, #sq-2, #sq-3 {
+  border-top: 0;
+}
+
+#sq-7, #sq-8, #sq-9 {
+  border-bottom: 0;
+}
