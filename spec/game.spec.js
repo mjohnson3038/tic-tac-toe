@@ -1,5 +1,5 @@
 import Game from 'game';
-import Board from 'board';
+import Board from 'app/models/board';
 
 describe("Game", function(){
   var game;

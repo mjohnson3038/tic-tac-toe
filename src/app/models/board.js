@@ -9,9 +9,9 @@ const Board = Backbone.Model.extend ({
   },
 
   isFull: function(){
-    for(var i = 0; i < this.grid.length; i++){
-      for(var j = 0; j < this.grid[i].length; j++){
-        if(this.grid[i][j] === null){
+    for(var i = 0; i < this.get("grid").length; i++){
+      for(var j = 0; j < this.get("grid")[i].length; j++){
+        if(this.get("grid")[i][j] === null){
           return false;
         }
       }
@@ -19,8 +19,6 @@ const Board = Backbone.Model.extend ({
     }
   }
 });
-
-
 
 
 export default Board;
