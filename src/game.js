@@ -1,5 +1,5 @@
 import Board from "board";
-import Player from "player";
+import Player from 'app/models/player';
 
 var Game = function() {
   // TODO: Test if playerOne, playerTwo are instances of Player

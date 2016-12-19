@@ -1,4 +1,4 @@
-import Player from 'player';
+import Player from 'app/models/player';
 
 describe("Player", function() {
   var noelle = new Player();
@@ -10,12 +10,12 @@ describe("Player", function() {
   });
 
   it("should have a turn variable defaulted to false", function(){
-    expect(noelle.turn).toBeDefined();
-    expect(noelle.turn).toBe(false);
+    expect(noelle.get('turn')).toBeDefined();
+    expect(noelle.get('turn')).toBe(false);
   });
 
   it("should have a mark variable", function() {
-    expect(noelle.mark).toBeDefined();
-    expect(noelle.mark).toBe(null);
+    expect(noelle.get('mark')).toBeDefined();
+    expect(noelle.get('mark')).toBe(null);
   });
 });
