@@ -8,7 +8,7 @@ var ApplicationView = Backbone.View.extend({
 
   events: {
     'click #new-game': 'startNewGame'
-    
+
   },
 
   startNewGame: function(e){
@@ -17,6 +17,9 @@ var ApplicationView = Backbone.View.extend({
   },
 
   render: function() {
+    var board = new BoardView( {
+      el: '#board'
+    });
     return this;
   }
 });
