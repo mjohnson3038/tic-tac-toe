@@ -9,4 +9,4 @@ var appView = new ApplicationView({
   model: application
 });
 
-appView.render();
+// appView.render();

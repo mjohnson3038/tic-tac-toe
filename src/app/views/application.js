@@ -20,6 +20,7 @@ var ApplicationView = Backbone.View.extend({
     var board = new BoardView( {
       el: '#board'
     });
+    console.log("You are rendering the board here??????");
     return this;
   }
 });

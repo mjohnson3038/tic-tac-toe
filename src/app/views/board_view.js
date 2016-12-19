@@ -17,6 +17,7 @@ var BoardView = Backbone.View.extend({
   },
 
   render: function() {
+    console.log("You are rendering the board view");
     return this;
   }
 });
