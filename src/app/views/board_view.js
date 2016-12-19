@@ -11,6 +11,7 @@ var BoardView = Backbone.View.extend({
 
   playSquare: function(e){
     // To click and play a square in a game of TTT. Need to find a way to pass in the id of the click element.
+     console.log("You've clicked the board");
   },
 
   render: function() {

@@ -1,5 +1,5 @@
 import Backbone from 'backbone';
-import BoardView from 'app/views/board-view.js';
+import BoardView from 'app/views/board_view';
 
 var ApplicationView = Backbone.View.extend({
   initialize: function(){
@@ -12,6 +12,7 @@ var ApplicationView = Backbone.View.extend({
 
   startNewGame: function(e){
     // clears board and initiates new game
+    console.log("You've started a new game");
   },
 
   render: function() {
