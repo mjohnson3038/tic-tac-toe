@@ -8,6 +8,7 @@ var ApplicationView = Backbone.View.extend({
 
   events: {
     'click #new-game': 'startNewGame'
+    
   },
 
   startNewGame: function(e){
