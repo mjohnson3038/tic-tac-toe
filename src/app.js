@@ -5,7 +5,7 @@ import BoardView from 'app/views/board_view';
 var application = new Application();
 
 var appView = new ApplicationView({
-  el: '#main',
+  el: 'main',
   model: application
 });
 
