@@ -1,3 +1,6 @@
+html {
+  margin-left: 2.5em;
+}
 h1 {
   text-align: center;
 }
@@ -15,9 +18,19 @@ table {
 td {
   border: 1px solid #000000;
   background-color: white;
-  padding: 20px;
-  height: 4em;
+  padding: 0px;
+  height: 2em;
+  width: 2em;
   text-align: center;
+  font-size: 2em;
+}
+
+button, h1, td {
+  font-family: 'Chewy', cursive;
+}
+
+section #current-player {
+  border: 1px dashed black;
 }
 
 #sq-1, #sq-4, #sq-7 {
