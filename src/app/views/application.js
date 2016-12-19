@@ -8,12 +8,16 @@ var ApplicationView = Backbone.View.extend({
 
   events: {
     'click #new-game': 'startNewGame'
+  },
 
+  clearBoard: function(e){
+    console.log("Board cleared");
   },
 
   startNewGame: function(e){
     // clears board and initiates new game
     console.log("You've started a new game");
+    this.clearBoard(e);
   },
 
   render: function() {
