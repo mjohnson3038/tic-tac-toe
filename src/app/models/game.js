@@ -26,7 +26,7 @@ const Game = Backbone.Model.extend({
   },
 
   validSquare: function(a, b) {
-    if(this.board.get("grid")[a][b] === null) {
+    if(this.board.grid[a][b] === null) {
       return true;
     } else {
       return false;
@@ -59,32 +59,32 @@ const Game = Backbone.Model.extend({
   winner: function(){
     // FOR THE HORIZONTAL WIN - STILL TO DETERMINE IF WE CNA PUT THIS IN A LOOP VS HARD CODING.
 
-    for(var i = 0; i < this.board.get("grid").length; i++){
-      if (this.board.get("grid")[i][0] == this.board.get("grid")[i][1] && this.board.get("grid")[i][0] == this.board.get("grid")[i][2] && this.board.get("grid")[i][0] !== null){
-        // console.log(">>>>>lettter:" + this.board.get("grid")[i][0]);
-        // console.log(">>>>>player:" + this.playerByMark(this.board.get("grid")[i][0]));
-        return this.playerByMark(this.board.get("grid")[i][0]);
+    for(var i = 0; i < this.board.grid.length; i++){
+      if (this.board.grid[i][0] == this.board.grid[i][1] && this.board.grid[i][0] == this.board.grid[i][2] && this.board.grid[i][0] !== null){
+        console.log(">>>>>lettter:" + this.board.grid[i][0]);
+        console.log(">>>>>player:" + this.playerByMark(this.board.grid[i][0]));
+        return this.playerByMark(this.board.grid[i][0]);
       }
     }
     // VERTICAL WIN
-    for(var k = 0; k < this.board.get("grid")[0].length; k++) {
-      if (this.board.get("grid")[0][k] == this.board.get("grid")[1][k] && this.board.get("grid")[0][k] == this.board.get("grid")[2][k] && this.board.get("grid")[0][k] !== null){
-        // console.log(">>>>>lettter:" + this.board.get("grid")[0][k]);
-        // console.log(">>>>>player:" + this.playerByMark(this.board.get("grid")[0][k]));
-        return this.playerByMark(this.board.get("grid")[0][k]);
+    for(var k = 0; k < this.board.grid[0].length; k++) {
+      if (this.board.grid[0][k] == this.board.grid[1][k] && this.board.grid[0][k] == this.board.grid[2][k] && this.board.grid[0][k] !== null){
+        console.log(">>>>>lettter:" + this.board.grid[0][k]);
+        console.log(">>>>>player:" + this.playerByMark(this.board.grid[0][k]));
+        return this.playerByMark(this.board.grid[0][k]);
       }
     }
 
     // DIAGONAL WINS
-    if (this.board.get("grid")[0][0] == this.board.get("grid")[1][1] && this.board.get("grid")[0][0] == this.board.get("grid")[2][2] && this.board.get("grid")[0][0] !== null){
-      // console.log(">>>>>lettter:" + this.board.get("grid")[0][0]);
-      // console.log(">>>>>player:" + this.playerByMark(this.board.get("grid")[0][0]));
-      return this.playerByMark(this.board.get("grid")[0][0]);
+    if (this.board.grid[0][0] == this.board.grid[1][1] && this.board.grid[0][0] == this.board.grid[2][2] && this.board.grid[0][0] !== null){
+      console.log(">>>>>lettter:" + this.board.grid[0][0]);
+      console.log(">>>>>player:" + this.playerByMark(this.board.grid[0][0]));
+      return this.playerByMark(this.board.grid[0][0]);
     }
-    if (this.board.get("grid")[0][2] == this.board.get("grid")[1][1] && this.board.get("grid")[0][2] == this.board.get("grid")[2][0] && this.board.get("grid")[0][2] !== null){
-      // console.log(">>>>>lettter:" + this.board.get("grid")[0][2]);
-      // console.log(">>>>>player:" + this.playerByMark(this.board.get("grid")[0][2]));
-      return this.playerByMark(this.board.get("grid")[0][2]);
+    if (this.board.grid[0][2] == this.board.grid[1][1] && this.board.grid[0][2] == this.board.grid[2][0] && this.board.grid[0][2] !== null){
+      console.log(">>>>>lettter:" + this.board.grid[0][2]);
+      console.log(">>>>>player:" + this.playerByMark(this.board.grid[0][2]));
+      return this.playerByMark(this.board.grid[0][2]);
     }
 
     return null;
@@ -104,7 +104,7 @@ const Game = Backbone.Model.extend({
     if (this.winner()){
       return "Sorry the game has already been won.";
     } else if (this.validSquare(a,b) === false) {
-      console.log(">>>>>>>>>>> square: " + this.board.get("grid")[a][b]);
+      console.log(">>>>>>>>>>> square: " + this.board.grid[a][b]);
       return "Sorry, the square is already played, please pick another one";
     } else if (this.winner() === null && this.validSquare(a,b)) {
       // Checking to see whose turn it is.
@@ -112,9 +112,9 @@ const Game = Backbone.Model.extend({
       // need to make a temporary board so I can change just one letter
       var tempBoard = [[null,null,null],[null,null,null],[null,null,null]];
       // console.log("this >>>>:" + this);
-      // console.log("this >>>>:" + this);
-      // console.log("this.currentPlayer() >>>>:" + this.currentPlayer());
-      // console.log("this.currentPlayer().mark >>>>:" + this.currentPlayer().mark);
+      console.log("this >>>>:" + this);
+      console.log("this.currentPlayer() >>>>:" + this.currentPlayer());
+      console.log("this.currentPlayer().mark >>>>:" + this.currentPlayer().mark);
 
       // console.log("temporary board >>>>:" + tempBoard[a][b]);
       var mark;
@@ -127,9 +127,9 @@ const Game = Backbone.Model.extend({
 
       tempBoard[a][b] = mark;
 
-      this.board.set("grid", tempBoard);
+      this.board.grid = tempBoard;
       // console.log("temporary board >>>>: " + tempBoard[a][b]);
-      // console.log(">>>>>>>>play square printed: " + this.board.get("grid"));
+      // console.log(">>>>>>>>play square printed: " + this.board.grid);
 
       if(this.winner()) {
         return "Congratulations, " + this.winner() + " has won!";
