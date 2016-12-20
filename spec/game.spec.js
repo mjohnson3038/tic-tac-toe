@@ -211,14 +211,16 @@ describe("Game", function(){
     it("should play a square if it is valid and game hasn't been won yet", function(){
       // console.log(">>>>>>>>>>>>" + game.board.get("grid"));
       console.log("player one mark: " + game.playerOne.get("mark"));
+      console.log(">>>>>>!!!!!!!!!" + game.board.get("grid")[1][1]);
       game.play(1,1);
+      console.log(">>>>>>!!!!!!!!!" + game.board.get("grid")[1][1]);
       // console.log(">>>>>>>>>>>>" + game.board.get("grid"));
       expect(game.board.get("grid")[1][1]).toEqual(game.playerOne.get("mark"));
     });
 
     it("should toggle the turns once a valid play is completed", function(){
       expect(game.playerOne.get("turn")).toEqual(true);
-      console.log(">>>> grid: " + game.board.get('grid')[1][1]);
+      console.log(">>>> grid: " + game.board.get('grid'));
       game.play(1,1);
       console.log(">>>> grid: " + game.board.get('grid')[1][1]);
       console.log("player one mark: " + game.playerOne.get("mark"));
@@ -228,15 +230,15 @@ describe("Game", function(){
       expect(game.playerOne.get("turn")).toEqual(false);
       expect(game.playerTwo.get("turn")).toEqual(true);
     });
-    //
-    // it("should announce when a player has won", function(){
-    //   game.play(0,0);
-    //   game.play(0,2);
-    //   game.play(1,1);
-    //   game.play(1,2);
-    //   game.play(2,2);
-    //   expect(game.play(2,2)).toEqual("Congratulations, " + game.winner() + " has won!");
-    // });
+    
+    it("should announce when a player has won", function(){
+      game.play(0,0);
+      game.play(0,2);
+      game.play(1,1);
+      game.play(1,2);
+      game.play(2,2);
+      expect(game.play(2,2)).toBe("Congratulations, " + game.winner() + " has won!");
+    });
 
     it("should throw an error when a player plays a play out of range (0-2)", function(){
       expect(function(){game.play(2,3);}).toThrowError("Coordinates must be integer numbers between 0 and 2 inclusive");
