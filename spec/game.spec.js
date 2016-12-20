@@ -208,18 +208,20 @@ describe("Game", function(){
       expect(game.play(1,1)).toEqual("Sorry, the square is already played, please pick another one");
     });
 
-    // it("should play a square if it is valid and game hasn't been won yet", function(){
-    //   game.play(1,1);
-    //   expect(game.board.get("grid")[1][1]).toEqual(game.playerOne.get("mark"));
-    // });
-    //
-    // it("should toggle the turns once a valid play is completed", function(){
-    //   expect(game.playerOne.get("turn")).toEqual(true);
-    //   game.play(1,1);
-    //   expect(game.board.get("grid")[1][1]).toEqual(game.playerOne.get("mark"));
-    //   expect(game.playerOne.get("turn")).toEqual(false);
-    //   expect(game.playerTwo.get("turn")).toEqual(true);
-    // });
+    it("should play a square if it is valid and game hasn't been won yet", function(){
+      console.log(">>>>>>>>>>>>" + game.board.get("grid"));
+      game.play(1,1);
+      console.log(">>>>>>>>>>>>" + game.board.get("grid"));
+      expect(game.board.get("grid")[1][1]).toEqual(game.playerOne.get("mark"));
+    });
+    
+    it("should toggle the turns once a valid play is completed", function(){
+      expect(game.playerOne.get("turn")).toEqual(true);
+      game.play(1,1);
+      expect(game.board.get("grid")[1][1]).toEqual(game.playerOne.get("mark"));
+      expect(game.playerOne.get("turn")).toEqual(false);
+      expect(game.playerTwo.get("turn")).toEqual(true);
+    });
     //
     // it("should announce when a player has won", function(){
     //   game.play(0,0);
@@ -229,23 +231,23 @@ describe("Game", function(){
     //   game.play(2,2);
     //   expect(game.play(2,2)).toEqual("Congratulations, " + game.winner() + " has won!");
     // });
-    //
-    // it("should throw an error when a player plays a play out of range (0-2)", function(){
-    //   expect(function(){game.play(2,3);}).toThrowError("Coordinates must be integer numbers between 0 and 2 inclusive");
-    //   expect(function(){game.play(2,-1);}).toThrowError("Coordinates must be integer numbers between 0 and 2 inclusive");
-    //   expect(function(){game.play(-1,2);}).toThrowError("Coordinates must be integer numbers between 0 and 2 inclusive");
-    //   expect(function(){game.play(-1,3);}).toThrowError("Coordinates must be integer numbers between 0 and 2 inclusive");
-    // });
-    //
-    // it("should throw an error when a player references a square with anything other then typeof number", function(){
-    //   expect(function(){game.play(2,"purple");}).toThrowError("Coordinates must be integer numbers between 0 and 2 inclusive");
-    //   expect(function(){game.play(true,0);}).toThrowError("Coordinates must be integer numbers between 0 and 2 inclusive");
-    //   expect(function(){game.play([1,2]);}).toThrowError("Coordinates must be integer numbers between 0 and 2 inclusive");
-    //   expect(function(){game.play(1.1,2);}).toThrowError("Coordinates must be integer numbers between 0 and 2 inclusive");
-    // });
-    //
-    // it("should throw an error when a player plays a square with non-integer coordinates", function(){
-    //   expect(function(){game.play(1.1,2);}).toThrowError("Coordinates must be integer numbers between 0 and 2 inclusive");
-    // });
+
+    it("should throw an error when a player plays a play out of range (0-2)", function(){
+      expect(function(){game.play(2,3);}).toThrowError("Coordinates must be integer numbers between 0 and 2 inclusive");
+      expect(function(){game.play(2,-1);}).toThrowError("Coordinates must be integer numbers between 0 and 2 inclusive");
+      expect(function(){game.play(-1,2);}).toThrowError("Coordinates must be integer numbers between 0 and 2 inclusive");
+      expect(function(){game.play(-1,3);}).toThrowError("Coordinates must be integer numbers between 0 and 2 inclusive");
+    });
+
+    it("should throw an error when a player references a square with anything other then typeof number", function(){
+      expect(function(){game.play(2,"purple");}).toThrowError("Coordinates must be integer numbers between 0 and 2 inclusive");
+      expect(function(){game.play(true,0);}).toThrowError("Coordinates must be integer numbers between 0 and 2 inclusive");
+      expect(function(){game.play([1,2]);}).toThrowError("Coordinates must be integer numbers between 0 and 2 inclusive");
+      expect(function(){game.play(1.1,2);}).toThrowError("Coordinates must be integer numbers between 0 and 2 inclusive");
+    });
+
+    it("should throw an error when a player plays a square with non-integer coordinates", function(){
+      expect(function(){game.play(1.1,2);}).toThrowError("Coordinates must be integer numbers between 0 and 2 inclusive");
+    });
   });
 });

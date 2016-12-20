@@ -61,22 +61,30 @@ const Game = Backbone.Model.extend({
 
     for(var i = 0; i < this.board.get("grid").length; i++){
       if (this.board.get("grid")[i][0] == this.board.get("grid")[i][1] && this.board.get("grid")[i][0] == this.board.get("grid")[i][2] && this.board.get("grid")[i][0] !== null){
+        // console.log(">>>>>lettter:" + this.board.get("grid")[i][0]);
+        // console.log(">>>>>player:" + this.playerByMark(this.board.get("grid")[i][0]));
         return this.playerByMark(this.board.get("grid")[i][0]);
       }
     }
     // VERTICAL WIN
     for(var k = 0; k < this.board.get("grid")[0].length; k++) {
       if (this.board.get("grid")[0][k] == this.board.get("grid")[1][k] && this.board.get("grid")[0][k] == this.board.get("grid")[2][k] && this.board.get("grid")[0][k] !== null){
+        // console.log(">>>>>lettter:" + this.board.get("grid")[0][k]);
+        // console.log(">>>>>player:" + this.playerByMark(this.board.get("grid")[0][k]));
         return this.playerByMark(this.board.get("grid")[0][k]);
       }
     }
 
     // DIAGONAL WINS
-    if (this.board.get("grid")[0][0] == this.board.get("grid")[1][1] && this.board.get("grid")[0][0] == this.board.get("grid")[2][2] && this.board.get("grid")[1][1] !== null){
-      return this.playerByMark(this.board.get("grid")[1][1]);
+    if (this.board.get("grid")[0][0] == this.board.get("grid")[1][1] && this.board.get("grid")[0][0] == this.board.get("grid")[2][2] && this.board.get("grid")[0][0] !== null){
+      // console.log(">>>>>lettter:" + this.board.get("grid")[0][0]);
+      // console.log(">>>>>player:" + this.playerByMark(this.board.get("grid")[0][0]));
+      return this.playerByMark(this.board.get("grid")[0][0]);
     }
-    if (this.board.get("grid")[0][2] == this.board.get("grid")[1][1] && this.board.get("grid")[0][2] == this.board.get("grid")[2][0] && this.board.get("grid")[1][1] !== null){
-      return this.playerByMark(this.board.get("grid")[1][1]);
+    if (this.board.get("grid")[0][2] == this.board.get("grid")[1][1] && this.board.get("grid")[0][2] == this.board.get("grid")[2][0] && this.board.get("grid")[0][2] !== null){
+      // console.log(">>>>>lettter:" + this.board.get("grid")[0][2]);
+      // console.log(">>>>>player:" + this.playerByMark(this.board.get("grid")[0][2]));
+      return this.playerByMark(this.board.get("grid")[0][2]);
     }
 
     return null;
@@ -100,7 +108,11 @@ const Game = Backbone.Model.extend({
     } else if (this.winner() === null && this.validSquare(a,b)) {
       // Checking to see whose turn it is.
 
-      this.board.get("grid")[a][b] = this.currentPlayer().mark;
+      // need to make a temporary board so I can change just one letter
+      var tempBoard = [[null,null,null],[null,null,null],[null,null,null]];
+      tempBoard[a][b] = this.currentPlayer().mark;
+
+      this.board.set("grid", tempBoard);
 
       if(this.winner()) {
         return "Congratulations, " + this.winner() + " has won!";
