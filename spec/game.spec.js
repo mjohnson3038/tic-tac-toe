@@ -227,10 +227,12 @@ describe("Game", function(){
     });
 
     it("should announce when a player has won", function(){
+      console.log("MMMYYYSSTTTERRRY TESTTTT!");
       game.play(0,0);
       game.play(0,2);
       game.play(1,1);
       game.play(1,2);
+      console.log("griiiiddd from the testtttt size" + game.board.grid);
       // game.play(2,2);
       expect(game.play(2,2)).toBe("Congratulations, " + game.winner() + " has won!");
     });

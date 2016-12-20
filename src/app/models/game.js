@@ -87,6 +87,8 @@ const Game = Backbone.Model.extend({
       return this.playerByMark(this.board.grid[0][2]);
     }
 
+    console.log("no one has won");
+    console.log("no one has one and here is the grid" + this.board.grid);
     return null;
   },
 
@@ -110,11 +112,8 @@ const Game = Backbone.Model.extend({
       // Checking to see whose turn it is.
 
       // need to make a temporary board so I can change just one letter
-      var tempBoard = [[null,null,null],[null,null,null],[null,null,null]];
+      var tempBoard = this.board.grid;
       // console.log("this >>>>:" + this);
-      console.log("this >>>>:" + this);
-      console.log("this.currentPlayer() >>>>:" + this.currentPlayer());
-      console.log("this.currentPlayer().mark >>>>:" + this.currentPlayer().get("mark"));
 
       // console.log("temporary board >>>>:" + tempBoard[a][b]);
       var mark = this.currentPlayer().get("mark");
@@ -123,8 +122,6 @@ const Game = Backbone.Model.extend({
       tempBoard[a][b] = mark;
 
       this.board.grid = tempBoard;
-      // console.log("temporary board >>>>: " + tempBoard[a][b]);
-      // console.log(">>>>>>>>play square printed: " + this.board.grid);
 
       if(this.winner()) {
         return "Congratulations, " + this.winner() + " has won!";
