@@ -230,13 +230,13 @@ describe("Game", function(){
       expect(game.playerOne.get("turn")).toEqual(false);
       expect(game.playerTwo.get("turn")).toEqual(true);
     });
-    
+
     it("should announce when a player has won", function(){
       game.play(0,0);
       game.play(0,2);
       game.play(1,1);
       game.play(1,2);
-      game.play(2,2);
+      // game.play(2,2);
       expect(game.play(2,2)).toBe("Congratulations, " + game.winner() + " has won!");
     });
 

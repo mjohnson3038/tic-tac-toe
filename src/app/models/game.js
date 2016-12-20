@@ -107,36 +107,26 @@ const Game = Backbone.Model.extend({
       console.log(">>>>>>>>>>> square: " + this.board.get("grid")[a][b]);
       return "Sorry, the square is already played, please pick another one";
     } else if (this.winner() === null && this.validSquare(a,b)) {
-      // Checking to see whose turn it is.
 
       // need to make a temporary board so I can change just one letter
       var tempBoard = [[null,null,null],[null,null,null],[null,null,null]];
-      // console.log("this >>>>:" + this);
-      // console.log("this >>>>:" + this);
-      // console.log("this.currentPlayer() >>>>:" + this.currentPlayer());
-      // console.log("this.currentPlayer().mark >>>>:" + this.currentPlayer().mark);
 
-      // console.log("temporary board >>>>:" + tempBoard[a][b]);
       var mark;
       if(this.playerOne.get("turn") === true){
         mark = "X";
       } else if (this.playerTwo.get("turn") === true) {
         mark = "O";
       }
-      // console.log ("mark >>>>>>>>>>>:" + mark);
-
+      
       tempBoard[a][b] = mark;
 
       this.board.set("grid", tempBoard);
-      // console.log("temporary board >>>>: " + tempBoard[a][b]);
-      // console.log(">>>>>>>>play square printed: " + this.board.get("grid"));
 
       if(this.winner()) {
         return "Congratulations, " + this.winner() + " has won!";
       }
       this.toggleTurn();
     }
-
   }
 });
 
