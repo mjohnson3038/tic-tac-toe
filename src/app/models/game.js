@@ -110,7 +110,11 @@ const Game = Backbone.Model.extend({
 
       // need to make a temporary board so I can change just one letter
       var tempBoard = [[null,null,null],[null,null,null],[null,null,null]];
+      console.log("this >>>>:" + this);
+      console.log("this.currentPlayer() >>>>:" + this.currentPlayer());
+      console.log("this.currentPlayer().mark >>>>:" + this.currentPlayer().mark);
       tempBoard[a][b] = this.currentPlayer().mark;
+      console.log("temporary board >>>>:" + tempBoard[a][b]);
 
       this.board.set("grid", tempBoard);
 

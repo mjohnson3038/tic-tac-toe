@@ -209,15 +209,21 @@ describe("Game", function(){
     });
 
     it("should play a square if it is valid and game hasn't been won yet", function(){
-      console.log(">>>>>>>>>>>>" + game.board.get("grid"));
+      // console.log(">>>>>>>>>>>>" + game.board.get("grid"));
+      console.log("player one mark: " + game.playerOne.get("mark"));
       game.play(1,1);
-      console.log(">>>>>>>>>>>>" + game.board.get("grid"));
+      // console.log(">>>>>>>>>>>>" + game.board.get("grid"));
       expect(game.board.get("grid")[1][1]).toEqual(game.playerOne.get("mark"));
     });
-    
+
     it("should toggle the turns once a valid play is completed", function(){
       expect(game.playerOne.get("turn")).toEqual(true);
+      console.log(">>>> grid: " + game.board.get('grid')[1][1]);
       game.play(1,1);
+      console.log(">>>> grid: " + game.board.get('grid')[1][1]);
+      console.log("player one mark: " + game.playerOne.get("mark"));
+
+      console.log(">>>>>>>>>>>>" + game.board.get("grid")[1][1]);
       expect(game.board.get("grid")[1][1]).toEqual(game.playerOne.get("mark"));
       expect(game.playerOne.get("turn")).toEqual(false);
       expect(game.playerTwo.get("turn")).toEqual(true);
