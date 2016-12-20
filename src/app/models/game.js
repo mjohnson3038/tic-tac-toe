@@ -114,15 +114,10 @@ const Game = Backbone.Model.extend({
       // console.log("this >>>>:" + this);
       console.log("this >>>>:" + this);
       console.log("this.currentPlayer() >>>>:" + this.currentPlayer());
-      console.log("this.currentPlayer().mark >>>>:" + this.currentPlayer().mark);
+      console.log("this.currentPlayer().mark >>>>:" + this.currentPlayer().get("mark"));
 
       // console.log("temporary board >>>>:" + tempBoard[a][b]);
-      var mark;
-      if(this.playerOne.get("turn") === true){
-        mark = "X";
-      } else if (this.playerTwo.get("turn") === true) {
-        mark = "O";
-      }
+      var mark = this.currentPlayer().get("mark");
       // console.log ("mark >>>>>>>>>>>:" + mark);
 
       tempBoard[a][b] = mark;
@@ -135,8 +130,8 @@ const Game = Backbone.Model.extend({
         return "Congratulations, " + this.winner() + " has won!";
       }
       this.toggleTurn();
+      return "Great Play!";
     }
-
   }
 });
 
