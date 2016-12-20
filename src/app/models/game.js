@@ -61,34 +61,23 @@ const Game = Backbone.Model.extend({
 
     for(var i = 0; i < this.board.grid.length; i++){
       if (this.board.grid[i][0] == this.board.grid[i][1] && this.board.grid[i][0] == this.board.grid[i][2] && this.board.grid[i][0] !== null){
-        console.log(">>>>>lettter:" + this.board.grid[i][0]);
-        console.log(">>>>>player:" + this.playerByMark(this.board.grid[i][0]));
         return this.playerByMark(this.board.grid[i][0]);
       }
     }
     // VERTICAL WIN
     for(var k = 0; k < this.board.grid[0].length; k++) {
       if (this.board.grid[0][k] == this.board.grid[1][k] && this.board.grid[0][k] == this.board.grid[2][k] && this.board.grid[0][k] !== null){
-        console.log(">>>>>lettter:" + this.board.grid[0][k]);
-        console.log(">>>>>player:" + this.playerByMark(this.board.grid[0][k]));
         return this.playerByMark(this.board.grid[0][k]);
       }
     }
 
     // DIAGONAL WINS
     if (this.board.grid[0][0] == this.board.grid[1][1] && this.board.grid[0][0] == this.board.grid[2][2] && this.board.grid[0][0] !== null){
-      console.log(">>>>>lettter:" + this.board.grid[0][0]);
-      console.log(">>>>>player:" + this.playerByMark(this.board.grid[0][0]));
       return this.playerByMark(this.board.grid[0][0]);
     }
     if (this.board.grid[0][2] == this.board.grid[1][1] && this.board.grid[0][2] == this.board.grid[2][0] && this.board.grid[0][2] !== null){
-      console.log(">>>>>lettter:" + this.board.grid[0][2]);
-      console.log(">>>>>player:" + this.playerByMark(this.board.grid[0][2]));
       return this.playerByMark(this.board.grid[0][2]);
     }
-
-    console.log("no one has won");
-    console.log("no one has one and here is the grid" + this.board.grid);
     return null;
   },
 
@@ -106,7 +95,7 @@ const Game = Backbone.Model.extend({
     if (this.winner()){
       return "Sorry the game has already been won.";
     } else if (this.validSquare(a,b) === false) {
-      console.log(">>>>>>>>>>> square: " + this.board.grid[a][b]);
+      // console.log(">>>>>>>>>>> square: " + this.board.grid[a][b]);
       return "Sorry, the square is already played, please pick another one";
     } else if (this.winner() === null && this.validSquare(a,b)) {
       // Checking to see whose turn it is.
@@ -127,7 +116,7 @@ const Game = Backbone.Model.extend({
         return "Congratulations, " + this.winner() + " has won!";
       }
       this.toggleTurn();
-      return "Great Play!";
+      // return "Great Play!";
     }
   }
 });
