@@ -18,6 +18,7 @@ describe("Board", function() {
     it("should return true if all values are NOT null", function(){
       var fullBoard = new Board();
       fullBoard.set('grid', [["O","X","O"],["X","O","X"],["X","O","X"]]);
+      // console.log(fullBoard.get('grid'));
       expect(fullBoard.isFull()).toEqual(true);
     });
 
