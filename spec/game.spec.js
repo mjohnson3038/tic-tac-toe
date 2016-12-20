@@ -96,19 +96,27 @@ describe("Game", function(){
 
   describe("winner", function(){
     it("should return the proper winner for horizontal win", function(){
-      game.board.set(("grid")[0], ["X","X","X"]);
+      var tempBoard = [[null,null,null],[null,null,null],[null,null,null]];
+      tempBoard[0] = ["X","X","X"];
+      game.board.set("grid", tempBoard);
       expect(game.winner()).toEqual("Player One");
     });
     it("should return the proper winner for horizontal win", function(){
-      game.board.set(("grid")[1], ["X","X","X"]);
+      var tempBoard = [[null,null,null],[null,null,null],[null,null,null]];
+      tempBoard[1] = ["X","X","X"];
+      game.board.set("grid", tempBoard);
       expect(game.winner()).toEqual("Player One");
     });
     it("should return the proper winner for horizontal win", function(){
-      game.board.set(("grid")[2], ["X","X","X"]);
+      var tempBoard = [[null,null,null],[null,null,null],[null,null,null]];
+      tempBoard[2] = ["X","X","X"];
+      game.board.set("grid", tempBoard);
       expect(game.winner()).toEqual("Player One");
     });
     it("should return the proper winner for horizontal win", function(){
-      game.board.set(("grid")[1], ["O","O","O"]);
+      var tempBoard = [[null,null,null],[null,null,null],[null,null,null]];
+      tempBoard[1] = ["O","O","O"];
+      game.board.set("grid", tempBoard);
       expect(game.winner()).toEqual("Player Two");
     });
     it("should return null for no winner", function(){
@@ -117,109 +125,127 @@ describe("Game", function(){
     });
 
     it("should return the proper winner for a vertical win", function(){
-      game.board.set(("grid")[0][0], "O");
-      game.board.set(("grid")[1][0], "O");
-      game.board.set(("grid")[2][0], "O");
+      var tempBoard = [[null,null,null],[null,null,null],[null,null,null]];
+      tempBoard[0][0] = "O";
+      tempBoard[1][0] = "O";
+      tempBoard[2][0] = "O";
+      game.board.set("grid", tempBoard);
       // console.log(">>>>>>>>>>>>>" + game.board.grid);
       expect(game.winner()).toEqual("Player Two");
     });
 
     it("should return the proper winner for a vertical win", function(){
-      game.board.set(("grid")[0][1], "O");
-      game.board.set(("grid")[1][1], "O");
-      game.board.set(("grid")[2][1], "O");
+      var tempBoard = [[null,null,null],[null,null,null],[null,null,null]];
+      tempBoard[0][1] = "O";
+      tempBoard[1][1] = "O";
+      tempBoard[2][1] = "O";
+      game.board.set("grid", tempBoard);
       // console.log(">>>>>>>>>>>>>" + game.board.grid);
       expect(game.winner()).toEqual("Player Two");
     });
 
 
     it("should return the proper winner for a vertical win", function(){
-      game.board.set(("grid")[0][2], "O");
-      game.board.set(("grid")[1][2], "O");
-      game.board.set(("grid")[2][2], "O");
+      var tempBoard = [[null,null,null],[null,null,null],[null,null,null]];
+      tempBoard[0][2] = "O";
+      tempBoard[1][2] = "O";
+      tempBoard[2][2] = "O";
+      game.board.set("grid", tempBoard);
       // console.log(">>>>>>>>>>>>>" + game.board.grid);
       expect(game.winner()).toEqual("Player Two");
     });
 
     it("should return the proper winner for a vertical win", function(){
-      game.board.set(("grid")[0][0], "X");
-      game.board.set(("grid")[1][0], "X");
-      game.board.set(("grid")[2][0], "X");
+      var tempBoard = [[null,null,null],[null,null,null],[null,null,null]];
+      tempBoard[0][0] = "X";
+      tempBoard[1][0] = "X";
+      tempBoard[2][0] = "X";
+      game.board.set("grid", tempBoard);
       // console.log(">>>>>>>>>>>>>" + game.board.grid);
       expect(game.winner()).toEqual("Player One");
     });
 
     it("should return the proper winner for a left diagonal win", function(){
-      game.board.set(("grid")[0][0], "X");
-      game.board.set(("grid")[1][1], "X");
-      game.board.set(("grid")[2][2], "X");
+      var tempBoard = [[null,null,null],[null,null,null],[null,null,null]];
+      tempBoard[0][0] = "X";
+      tempBoard[1][1] = "X";
+      tempBoard[2][2] = "X";
+      game.board.set("grid", tempBoard);
       expect(game.winner()).toEqual("Player One");
     });
 
     it("should return the proper winner for a right diagonal win", function(){
-      game.board.set(("grid")[0][2], "O");
-      game.board.set(("grid")[1][1], "O");
-      game.board.set(("grid")[2][0], "O");
+      var tempBoard = [[null,null,null],[null,null,null],[null,null,null]];
+      tempBoard[0][2] = "O";
+      tempBoard[1][1] = "O";
+      tempBoard[2][0] = "O";
+      game.board.set("grid", tempBoard);
       expect(game.winner()).toEqual("Player Two");
     });
 
     it("should return null if the entire game ends in a draw", function(){
-      game.board.set(("grid")[0], ["X", "O", "X"]);
-      game.board.set(("grid")[1], ["O", "X", "O"]);
-      game.board.set(("grid")[2], ["O", "X", "O"]);
+      var tempBoard = [[null,null,null],[null,null,null],[null,null,null]];
+      tempBoard[0] = ["X", "O", "X"];
+      tempBoard[1] = ["O", "X", "O"];
+      tempBoard[2] = ["O", "X", "O"];
+      game.board.set("grid", tempBoard);
       expect(game.winner()).toEqual(null);
     });
   });
-//
-//   describe("play", function(){
-//     it("the play should not go through if the game has already been won", function(){
-//       game.board.set(("grid")[0], ["X","X","X"]);
-//       expect(game.play(1,1)).toEqual("Sorry the game has already been won.");
-//     });
-//
-//     it("the play should not go through if the square isn't valid", function(){
-//       game.board.set(("grid")[1], ["X","X","O"]);
-//       expect(game.play(1,1)).toEqual("Sorry, the square is already played, please pick another one");
-//     });
-//
-//     it("should play a square if it is valid and game hasn't been won yet", function(){
-//       game.play(1,1);
-//       expect(game.board.get("grid")[1][1]).toEqual(game.playerOne.get("mark"));
-//     });
-//
-//     it("should toggle the turns once a valid play is completed", function(){
-//       expect(game.playerOne.get("turn")).toEqual(true);
-//       game.play(1,1);
-//       expect(game.board.get("grid")[1][1]).toEqual(game.playerOne.get("mark"));
-//       expect(game.playerOne.get("turn")).toEqual(false);
-//       expect(game.playerTwo.get("turn")).toEqual(true);
-//     });
-//
-//     it("should announce when a player has won", function(){
-//       game.play(0,0);
-//       game.play(0,2);
-//       game.play(1,1);
-//       game.play(1,2);
-// //      game.play(2,2);
-//       expect(game.play(2,2)).toEqual("Congratulations, " + game.winner() + " has won!");
-//     });
-//
-//     it("should throw an error when a player plays a play out of range (0-2)", function(){
-//       expect(function(){game.play(2,3);}).toThrowError("Coordinates must be integer numbers between 0 and 2 inclusive");
-//       expect(function(){game.play(2,-1);}).toThrowError("Coordinates must be integer numbers between 0 and 2 inclusive");
-//       expect(function(){game.play(-1,2);}).toThrowError("Coordinates must be integer numbers between 0 and 2 inclusive");
-//       expect(function(){game.play(-1,3);}).toThrowError("Coordinates must be integer numbers between 0 and 2 inclusive");
-//     });
-//
-//     it("should throw an error when a player references a square with anything other then typeof number", function(){
-//       expect(function(){game.play(2,"purple");}).toThrowError("Coordinates must be integer numbers between 0 and 2 inclusive");
-//       expect(function(){game.play(true,0);}).toThrowError("Coordinates must be integer numbers between 0 and 2 inclusive");
-//       expect(function(){game.play([1,2]);}).toThrowError("Coordinates must be integer numbers between 0 and 2 inclusive");
-//       expect(function(){game.play(1.1,2);}).toThrowError("Coordinates must be integer numbers between 0 and 2 inclusive");
-//     });
-//
-//     it("should throw an error when a player plays a square with non-integer coordinates", function(){
-//       expect(function(){game.play(1.1,2);}).toThrowError("Coordinates must be integer numbers between 0 and 2 inclusive");
-//     });
-//   });
+
+  describe("play", function(){
+    it("the play should not go through if the game has already been won", function(){
+      var tempBoard = [[null,null,null],[null,null,null],[null,null,null]];
+      tempBoard[0] = ["X", "X", "X"];
+      game.board.set("grid", tempBoard);
+      expect(game.play(1,1)).toEqual("Sorry the game has already been won.");
+    });
+
+    it("the play should not go through if the square isn't valid", function(){
+      var tempBoard = [[null,null,null],[null,null,null],[null,null,null]];
+      tempBoard[1] = ["X","X","O"];
+      game.board.set("grid", tempBoard);
+      expect(game.play(1,1)).toEqual("Sorry, the square is already played, please pick another one");
+    });
+
+    // it("should play a square if it is valid and game hasn't been won yet", function(){
+    //   game.play(1,1);
+    //   expect(game.board.get("grid")[1][1]).toEqual(game.playerOne.get("mark"));
+    // });
+    //
+    // it("should toggle the turns once a valid play is completed", function(){
+    //   expect(game.playerOne.get("turn")).toEqual(true);
+    //   game.play(1,1);
+    //   expect(game.board.get("grid")[1][1]).toEqual(game.playerOne.get("mark"));
+    //   expect(game.playerOne.get("turn")).toEqual(false);
+    //   expect(game.playerTwo.get("turn")).toEqual(true);
+    // });
+    //
+    // it("should announce when a player has won", function(){
+    //   game.play(0,0);
+    //   game.play(0,2);
+    //   game.play(1,1);
+    //   game.play(1,2);
+    //   game.play(2,2);
+    //   expect(game.play(2,2)).toEqual("Congratulations, " + game.winner() + " has won!");
+    // });
+    //
+    // it("should throw an error when a player plays a play out of range (0-2)", function(){
+    //   expect(function(){game.play(2,3);}).toThrowError("Coordinates must be integer numbers between 0 and 2 inclusive");
+    //   expect(function(){game.play(2,-1);}).toThrowError("Coordinates must be integer numbers between 0 and 2 inclusive");
+    //   expect(function(){game.play(-1,2);}).toThrowError("Coordinates must be integer numbers between 0 and 2 inclusive");
+    //   expect(function(){game.play(-1,3);}).toThrowError("Coordinates must be integer numbers between 0 and 2 inclusive");
+    // });
+    //
+    // it("should throw an error when a player references a square with anything other then typeof number", function(){
+    //   expect(function(){game.play(2,"purple");}).toThrowError("Coordinates must be integer numbers between 0 and 2 inclusive");
+    //   expect(function(){game.play(true,0);}).toThrowError("Coordinates must be integer numbers between 0 and 2 inclusive");
+    //   expect(function(){game.play([1,2]);}).toThrowError("Coordinates must be integer numbers between 0 and 2 inclusive");
+    //   expect(function(){game.play(1.1,2);}).toThrowError("Coordinates must be integer numbers between 0 and 2 inclusive");
+    // });
+    //
+    // it("should throw an error when a player plays a square with non-integer coordinates", function(){
+    //   expect(function(){game.play(1.1,2);}).toThrowError("Coordinates must be integer numbers between 0 and 2 inclusive");
+    // });
+  });
 });
