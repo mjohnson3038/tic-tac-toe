@@ -53,10 +53,12 @@ var ApplicationView = Backbone.View.extend({
       a = 2;
       b = 2;
     }
-    console.log(">>>>>>>>>>>>" + a);
-    console.log(b);
+    // console.log(">>>>>>>>>>>>" + a);
+    // console.log(b);
     this.model.play(a, b);
-    console.log(this.model.board.grid);
+    console.log(this.model.board.grid[0]);
+    console.log(this.model.board.grid[1]);
+    console.log(this.model.board.grid[2]);
   },
 
   render: function() {
