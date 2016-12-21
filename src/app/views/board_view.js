@@ -19,7 +19,9 @@ var BoardView = Backbone.View.extend({
     // console.log(e.currentTarget.id);
     // // var squareId = e.currentTarget.id;
     // console.log(this.player);
-    // console.log(this.player.get("turn"));
+    console.log("playerOne turn" + this.gameModel.playerOne.get("turn"));
+    console.log("playerTwo turn" + this.gameModel.playerTwo.get("turn"));
+
     var mark;
     if (this.gameModel.playerOne.get("turn")){
       mark = "X";

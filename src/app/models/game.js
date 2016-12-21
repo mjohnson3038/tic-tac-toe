@@ -33,12 +33,12 @@ const Game = Backbone.Model.extend({
   },
 
   currentPlayer: function(){
-    console.log("CUUURENNNTNT PLAYER");
+    // console.log("CUUURENNNTNT PLAYER");
     if (this.playerOne.get("turn") === true){
-      console.log("player: player one");
+      // console.log("player: player one");
       return this.playerOne;
     } else if (this.playerTwo.get("turn") === true) {
-      console.log("player: player two");
+      // console.log("player: player two");
       return this.playerTwo;
     }
   },

@@ -13,12 +13,15 @@ var ApplicationView = Backbone.View.extend({
   },
 
   clearBoard: function(e){
+    this.model.board.grid = [[null,null,null],[null,null,null],[null,null,null]];
+    this.$(".square").empty();
     console.log("Board cleared");
   },
 
   startNewGame: function(e){
     // clears board and initiates new game
     console.log("You've started a new game");
+
     this.clearBoard(e);
   },
 
