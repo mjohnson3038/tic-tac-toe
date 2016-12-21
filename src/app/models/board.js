@@ -13,8 +13,8 @@ const Board = Backbone.Model.extend ({
           return false;
         }
       }
-      return true;
     }
+    return true;
   }
 });
 

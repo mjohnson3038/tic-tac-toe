@@ -31,7 +31,6 @@ var BoardView = Backbone.View.extend({
     // console.log(">>>>>>>>mark" + mark);
     this.$("#" + e.currentTarget.id).html(mark);
     this.trigger("play", e.currentTarget.id);
-
   },
 
   render: function() {
