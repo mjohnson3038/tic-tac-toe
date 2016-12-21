@@ -1,5 +1,7 @@
 import Backbone from 'backbone';
 import BoardView from 'app/views/board_view';
+import Board from 'app/models/board';
+import Game from 'app/models/game';
 
 var ApplicationView = Backbone.View.extend({
   initialize: function(){
@@ -20,10 +22,56 @@ var ApplicationView = Backbone.View.extend({
     this.clearBoard(e);
   },
 
+  playedSquare: function(e){
+    var a;
+    var b;
+    if (e == "sq-1"){
+      a = 0;
+      b = 0;
+    } else if (e == "sq-2") {
+      a = 0;
+      b = 1;
+    } else if (e == "sq-3") {
+      a = 0;
+      b = 2;
+    } else if (e == "sq-4") {
+      a = 1;
+      b = 0;
+    } else if (e == "sq-5") {
+      a = 1;
+      b = 1;
+    } else if (e == "sq-6") {
+      a = 1;
+      b = 2;
+    } else if (e == "sq-7") {
+      a = 2;
+      b = 0;
+    } else if (e == "sq-8") {
+      a = 2;
+      b = 1;
+    } else if (e == "sq-9") {
+      a = 2;
+      b = 2;
+    }
+    console.log(">>>>>>>>>>>>" + a);
+    console.log(b);
+    this.model.play(a, b);
+    console.log(this.model.board.grid);
+  },
+
   render: function() {
-    var board = new BoardView( {
-      el: '#board'
+    console.log(this.model.currentPlayer().get("mark"));
+    var board = new Board();
+    var boardView = new BoardView( {
+      el: '#board',
+      model: board,
+      gameModel: this.model
     });
+    this.listenTo(boardView, "play", this.playedSquare);
+    // console.log(currentPlayer);
+
+    console.log("booooaardd" + boardView);
+
     return this;
   }
 });

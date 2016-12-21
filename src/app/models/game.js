@@ -3,8 +3,6 @@ import Backbone from 'backbone';
 import Board from 'app/models/board';
 import Player from 'app/models/player';
 
-
-
 const Game = Backbone.Model.extend({
 
   initialize: function(options) {
@@ -21,6 +19,7 @@ const Game = Backbone.Model.extend({
   },
 
   toggleTurn: function() {
+    console.log("TOOOGLLEINNNGNNGN TUUURN");
     this.playerOne.set("turn", !(this.playerOne.get("turn")));
     this.playerTwo.set("turn", !(this.playerTwo.get("turn")));
   },
@@ -34,9 +33,12 @@ const Game = Backbone.Model.extend({
   },
 
   currentPlayer: function(){
+    console.log("CUUURENNNTNT PLAYER");
     if (this.playerOne.get("turn") === true){
+      console.log("player: player one");
       return this.playerOne;
     } else if (this.playerTwo.get("turn") === true) {
+      console.log("player: player two");
       return this.playerTwo;
     }
   },
@@ -82,6 +84,7 @@ const Game = Backbone.Model.extend({
   },
 
   play: function(a,b){
+    console.log("play called with " + a + ", " + b);
 
     // Error Handling of input type. Technically could be in one if-statement, but separated out if clear what each is looking for.
     if (typeof a !== "number" || typeof b !== "number" ){

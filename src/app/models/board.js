@@ -3,7 +3,7 @@ import Backbone from 'backbone';
 const Board = Backbone.Model.extend ({
 
   initialize: function(options){
-    this.grid = [[null,null,null],[null,null,null],[null,null,null]];
+    this.grid = [[null,null,"X"],[null,null,null],[null,null,null]];
   },
 
   isFull: function(){
