@@ -75,8 +75,17 @@ var ApplicationView = Backbone.View.extend({
   // },
 
   currentPlayer: function(e){
-    this.
-    console.log("current Player >>> " + this.model.currentPlayer());
+    console.log("CURRENT PLAYER WENT OFF!!!");
+    var turn;
+    if (e == "X"){
+      turn = "O";
+    } else if (e == "O") {
+      turn = "X";
+    }
+    this.$("#current-player").empty();
+    var html = this.currentTemplate({player: this.model.playerByMark(turn), mark: turn});
+    this.$("#current-player").append(html);
+    console.log(">>>>>>>>>> Current player: " + this.model.playerByMark(turn));
   },
 
   displayWinner: function(e){
@@ -94,7 +103,10 @@ var ApplicationView = Backbone.View.extend({
       model: board,
       gameModel: this.model
     });
+    var html = this.currentTemplate({player: this.model.playerByMark(turn), mark: turn});
+    this.$("#current-player").append(html);
     this.listenTo(boardView, "thereIsAWinner", this.displayWinner);
+    this.listenTo(boardView, "changedPlayer", this.currentPlayer);
     // console.log(currentPlayer);
 
     // console.log("booooaardd" + boardView);
