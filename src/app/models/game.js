@@ -26,8 +26,10 @@ const Game = Backbone.Model.extend({
 
   validSquare: function(a, b) {
     if(this.board.grid[a][b] === null) {
+      // console.log("square is valid");
       return true;
     } else {
+      // console.log("square is not valid");
       return false;
     }
   },

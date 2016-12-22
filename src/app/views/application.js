@@ -25,44 +25,48 @@ var ApplicationView = Backbone.View.extend({
     this.clearBoard(e);
   },
 
-  playedSquare: function(e){
-    var a;
-    var b;
-    if (e == "sq-1"){
-      a = 0;
-      b = 0;
-    } else if (e == "sq-2") {
-      a = 0;
-      b = 1;
-    } else if (e == "sq-3") {
-      a = 0;
-      b = 2;
-    } else if (e == "sq-4") {
-      a = 1;
-      b = 0;
-    } else if (e == "sq-5") {
-      a = 1;
-      b = 1;
-    } else if (e == "sq-6") {
-      a = 1;
-      b = 2;
-    } else if (e == "sq-7") {
-      a = 2;
-      b = 0;
-    } else if (e == "sq-8") {
-      a = 2;
-      b = 1;
-    } else if (e == "sq-9") {
-      a = 2;
-      b = 2;
-    }
-    // console.log(">>>>>>>>>>>>" + a);
-    // console.log(b);
-    this.model.play(a, b);
-    console.log(this.model.board.grid[0]);
-    console.log(this.model.board.grid[1]);
-    console.log(this.model.board.grid[2]);
-  },
+  // playedSquare: function(e){
+  //   var a;
+  //   var b;
+  //   if (e == "sq-1"){
+  //     a = 0;
+  //     b = 0;
+  //   } else if (e == "sq-2") {
+  //     a = 0;
+  //     b = 1;
+  //   } else if (e == "sq-3") {
+  //     a = 0;
+  //     b = 2;
+  //   } else if (e == "sq-4") {
+  //     a = 1;
+  //     b = 0;
+  //   } else if (e == "sq-5") {
+  //     a = 1;
+  //     b = 1;
+  //   } else if (e == "sq-6") {
+  //     a = 1;
+  //     b = 2;
+  //   } else if (e == "sq-7") {
+  //     a = 2;
+  //     b = 0;
+  //   } else if (e == "sq-8") {
+  //     a = 2;
+  //     b = 1;
+  //   } else if (e == "sq-9") {
+  //     a = 2;
+  //     b = 2;
+  //   }
+  //   // console.log(">>>>>>>>>>>>" + a);
+  //   // console.log(b);
+  //   // this.model.validSquare(a,b);
+  //   if (this.model.validSquare(a,b)){
+  //     this.model.play(a, b);
+  //     this.trigger("modelUpdated", [a,b]);
+  //   }
+  //   console.log(this.model.board.grid[0]);
+  //   console.log(this.model.board.grid[1]);
+  //   console.log(this.model.board.grid[2]);
+  // },
 
   render: function() {
     console.log(this.model.currentPlayer().get("mark"));
@@ -75,7 +79,7 @@ var ApplicationView = Backbone.View.extend({
     this.listenTo(boardView, "play", this.playedSquare);
     // console.log(currentPlayer);
 
-    console.log("booooaardd" + boardView);
+    // console.log("booooaardd" + boardView);
 
     return this;
   }

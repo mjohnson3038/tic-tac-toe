@@ -16,7 +16,6 @@ var BoardView = Backbone.View.extend({
   playSquare: function(e){
     // To click and play a square in a game of TTT. Need to find a way to pass in the id of the click element.
     // console.log("You've clicked the board");
-    // console.log(e.currentTarget.id);
     // // var squareId = e.currentTarget.id;
     // console.log(this.player);
     console.log("playerOne turn" + this.gameModel.playerOne.get("turn"));
@@ -29,8 +28,56 @@ var BoardView = Backbone.View.extend({
       mark = "O";
     }
     // console.log(">>>>>>>>mark" + mark);
-    this.$("#" + e.currentTarget.id).html(mark);
-    this.trigger("play", e.currentTarget.id);
+    // this.trigger("play", e.currentTarget.id);
+
+    var sqId = e.currentTarget.id;
+
+    var a;
+    var b;
+    if (sqId == "sq-1"){
+      a = 0;
+      b = 0;
+    } else if (sqId == "sq-2") {
+      a = 0;
+      b = 1;
+    } else if (sqId == "sq-3") {
+      a = 0;
+      b = 2;
+    } else if (sqId == "sq-4") {
+      a = 1;
+      b = 0;
+    } else if (sqId == "sq-5") {
+      a = 1;
+      b = 1;
+    } else if (sqId == "sq-6") {
+      a = 1;
+      b = 2;
+    } else if (sqId == "sq-7") {
+      a = 2;
+      b = 0;
+    } else if (sqId == "sq-8") {
+      a = 2;
+      b = 1;
+    } else if (sqId == "sq-9") {
+      a = 2;
+      b = 2;
+    }
+    // console.log(">>>>>>>>>>>>" + a);
+    // console.log(b);
+    if (this.gameModel.validSquare(a,b) && this.gameModel.winner() === null){
+      console.log("this is a valid square");
+      this.gameModel.play(a,b);
+      this.$("#" + e.currentTarget.id).html(mark);
+      console.log("game winner>>>>" + this.gameModel.winner());
+    } else {
+      console.log("this is not a valid square");
+    }
+
+    console.log(this.gameModel.board.grid[0]);
+    console.log(this.gameModel.board.grid[1]);
+    console.log(this.gameModel.board.grid[2]);
+
+
   },
 
   render: function() {
