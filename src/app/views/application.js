@@ -11,8 +11,10 @@ var ApplicationView = Backbone.View.extend({
     this.currentTemplate = _.template($('#tmpl-curr-player').html());
     this.render();
 
-    var turn = "X";
-    var html = this.currentTemplate({player: this.model.playerByMark(turn), mark: turn});
+    // To set the original message - 
+    var player = "X";
+    console.log("tuuuurrrnnn" + this.model.playerOne.get("turn"));
+    var html = this.currentTemplate({player: this.model.playerByMark(player), mark: player});
     this.$("#current-player").append(html);
   },
 
