@@ -73,6 +73,11 @@ var BoardView = Backbone.View.extend({
       console.log("this is not a valid square");
     }
 
+    if (this.gameModel.winner() !== null){
+      this.trigger("thereIsAWinner", mark);
+      console.log("trigger went off");
+    }
+
     console.log(this.gameModel.board.grid[0]);
     console.log(this.gameModel.board.grid[1]);
     console.log(this.gameModel.board.grid[2]);

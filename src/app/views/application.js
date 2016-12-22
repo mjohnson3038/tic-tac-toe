@@ -1,10 +1,13 @@
 import Backbone from 'backbone';
+import _ from 'underscore';
+import $ from 'jQuery';
 import BoardView from 'app/views/board_view';
 import Board from 'app/models/board';
 import Game from 'app/models/game';
 
 var ApplicationView = Backbone.View.extend({
   initialize: function(){
+    this.winnerTemplate = _.template($('#tmpl-winner').html());
     this.render();
   },
 
@@ -68,6 +71,15 @@ var ApplicationView = Backbone.View.extend({
   //   console.log(this.model.board.grid[2]);
   // },
 
+  displayWinner: function(e){
+    console.log("listenTO worked!");
+    console.log("this should be a mark of winner " + e);
+    console.log("display winner based on mark " + this.model.playerByMark(e));
+    var html = this.winnerTemplate(this.model.playerByMark(e));
+    console.log("this is the html " + html);
+    this.$("#current-player").after("there is a winner!");
+  },
+
   render: function() {
     console.log(this.model.currentPlayer().get("mark"));
     var board = new Board();
@@ -76,7 +88,7 @@ var ApplicationView = Backbone.View.extend({
       model: board,
       gameModel: this.model
     });
-    this.listenTo(boardView, "play", this.playedSquare);
+    this.listenTo(boardView, "thereIsAWinner", this.displayWinner);
     // console.log(currentPlayer);
 
     // console.log("booooaardd" + boardView);

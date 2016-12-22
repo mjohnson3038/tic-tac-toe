@@ -32,6 +32,8 @@ button, h1, td {
 
 section #current-player {
   border: 1px dashed black;
+  text-align: center;
+  font-size: 3em;
 }
 
 #sq-1, #sq-4, #sq-7 {
