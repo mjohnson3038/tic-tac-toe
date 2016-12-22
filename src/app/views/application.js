@@ -10,6 +10,10 @@ var ApplicationView = Backbone.View.extend({
     this.winnerTemplate = _.template($('#tmpl-winner').html());
     this.currentTemplate = _.template($('#tmpl-curr-player').html());
     this.render();
+
+    var turn = "X";
+    var html = this.currentTemplate({player: this.model.playerByMark(turn), mark: turn});
+    this.$("#current-player").append(html);
   },
 
   events: {
@@ -103,8 +107,6 @@ var ApplicationView = Backbone.View.extend({
       model: board,
       gameModel: this.model
     });
-    var html = this.currentTemplate({player: this.model.playerByMark(turn), mark: turn});
-    this.$("#current-player").append(html);
     this.listenTo(boardView, "thereIsAWinner", this.displayWinner);
     this.listenTo(boardView, "changedPlayer", this.currentPlayer);
     // console.log(currentPlayer);
