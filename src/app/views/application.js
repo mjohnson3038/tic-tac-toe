@@ -18,6 +18,7 @@ var ApplicationView = Backbone.View.extend({
   clearBoard: function(e){
     this.model.board.grid = [[null,null,null],[null,null,null],[null,null,null]];
     this.$(".square").empty();
+    this.$("#winner").empty();
     console.log("Board cleared");
   },
 
@@ -72,12 +73,9 @@ var ApplicationView = Backbone.View.extend({
   // },
 
   displayWinner: function(e){
-    console.log("listenTO worked!");
-    console.log("this should be a mark of winner " + e);
-    console.log("display winner based on mark " + this.model.playerByMark(e));
-    var html = this.winnerTemplate(this.model.playerByMark(e));
-    console.log("this is the html " + html);
-    this.$("#current-player").after("there is a winner!");
+    var html = this.winnerTemplate({player: this.model.playerByMark(e)});
+    this.$("#winner").append(html);
+    $("#winner").show();
   },
 
   render: function() {

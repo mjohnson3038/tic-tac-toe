@@ -15,6 +15,9 @@
       <section id="current-player">
       </section>
 
+      <section id="winner" hidden="true">
+      </section>
+
       <section id="game">
         <div class="row">
           <table id="board" class="medium-6 columns medium-offset-1">
@@ -42,7 +45,7 @@
     </main>
 
     <script type="text/template" id="tmpl-winner">
-      <h2>Congratulations, <%- player > ! You've won!</h2>
+      <h2>Congratulations, <%- player %> ! You've won!</h2>
     </script>
 
     <script type="text/template" id="tmpl-curr-player">
