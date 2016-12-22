@@ -8,6 +8,7 @@ import Game from 'app/models/game';
 var ApplicationView = Backbone.View.extend({
   initialize: function(){
     this.winnerTemplate = _.template($('#tmpl-winner').html());
+    this.currentTemplate = _.template($('#tmpl-curr-player').html());
     this.render();
   },
 
@@ -19,6 +20,7 @@ var ApplicationView = Backbone.View.extend({
     this.model.board.grid = [[null,null,null],[null,null,null],[null,null,null]];
     this.$(".square").empty();
     this.$("#winner").empty();
+    $("#current-player").show();
     console.log("Board cleared");
   },
 
@@ -72,10 +74,16 @@ var ApplicationView = Backbone.View.extend({
   //   console.log(this.model.board.grid[2]);
   // },
 
+  currentPlayer: function(e){
+    this.
+    console.log("current Player >>> " + this.model.currentPlayer());
+  },
+
   displayWinner: function(e){
     var html = this.winnerTemplate({player: this.model.playerByMark(e)});
     this.$("#winner").append(html);
     $("#winner").show();
+    $("#current-player").hide();
   },
 
   render: function() {
